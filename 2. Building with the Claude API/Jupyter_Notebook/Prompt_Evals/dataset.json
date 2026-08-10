@@ -2,6 +2,7 @@
   {
     "task": "Parse an AWS S3 bucket name from an S3 URI (e.g., 's3://my-bucket/path/to/file.txt') and extract just the bucket name",
     "format": "regex"
+    
   },
   {
     "task": "Create a JSON CloudFormation template snippet that defines an S3 bucket with versioning enabled and server-side encryption",
