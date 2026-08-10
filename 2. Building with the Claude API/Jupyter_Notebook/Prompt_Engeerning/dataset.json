@@ -1,0 +1,33 @@
+[
+  {
+    "prompt_inputs": {
+      "height": "178 cm",
+      "weight": "68 kg",
+      "goal": "Marathon training with peak performance during a 20-mile long run scheduled for 10 AM",
+      "restrictions": "No dairy, prefers plant-based protein sources"
+    },
+    "solution_criteria": [
+      "Meal plan covers all three nutrition phases: pre-workout (2-3 hours before 10 AM run), intra-workout (fueling strategy during the run), and post-workout recovery",
+      "Macronutrient ratios appropriate for endurance athlete (carbohydrate-focused with adequate protein and minimal fat during training window)",
+      "All meals and snacks accommodate dairy-free, plant-based protein restrictions",
+      "Plan is concise and fits within a single day format with specific timing"
+    ],
+    "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
+    "scenario": "Testing with a high-intensity sport athlete (e.g., marathon runner) who requires specific macronutrient ratios and timing around training sessions, including pre-workout, intra-workout, and recovery nutrition"
+  },
+  {
+    "prompt_inputs": {
+      "height": "173 cm",
+      "weight": "68 kg",
+      "goal": "Maintain performance while cutting to 66 kg for competition in 10 days without losing strength",
+      "restrictions": "Vegetarian, no dairy"
+    },
+    "solution_criteria": [
+      "Meal plan stays within 2,200-2,400 calories per day while meeting protein requirements (\u22651.6g per kg body weight)",
+      "All meals align with stated dietary restrictions (vegetarian, dairy-free)",
+      "Includes nutrient-dense foods that support athletic performance and recovery"
+    ],
+    "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
+    "scenario": "Testing with an athlete in a sport requiring weight management (e.g., boxer or gymnast) with caloric constraints, focusing on nutrient density and how to maintain performance while staying within strict calorie limits"
+  }
+]

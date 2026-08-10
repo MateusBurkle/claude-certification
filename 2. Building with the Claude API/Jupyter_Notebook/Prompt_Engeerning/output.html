@@ -1,0 +1,363 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prompt Evaluation Report</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 20px;
+                color: #333;
+            }
+            .header {
+                background-color: #f0f0f0;
+                padding: 20px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            .summary-stats {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .stat-box {
+                background-color: #fff;
+                border-radius: 5px;
+                padding: 15px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                flex-basis: 30%;
+                min-width: 200px;
+            }
+            .stat-value {
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 5px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            th {
+                background-color: #4a4a4a;
+                color: white;
+                text-align: left;
+                padding: 12px;
+            }
+            td {
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+                vertical-align: top;
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .output-cell {
+                white-space: pre-wrap;
+            }
+            .score {
+                font-weight: bold;
+                padding: 5px 10px;
+                border-radius: 3px;
+                display: inline-block;
+            }
+            .score-high {
+                background-color: #c8e6c9;
+                color: #2e7d32;
+            }
+            .score-medium {
+                background-color: #fff9c4;
+                color: #f57f17;
+            }
+            .score-low {
+                background-color: #ffcdd2;
+                color: #c62828;
+            }
+            .output {
+                overflow: auto;
+                white-space: pre-wrap;
+            }
+
+            .output pre {
+                background-color: #f5f5f5;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                margin: 0;
+                font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+                font-size: 14px;
+                line-height: 1.4;
+                color: #333;
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+                overflow-x: auto;
+                white-space: pre-wrap; 
+                word-wrap: break-word; 
+            }
+
+            td {
+                width: 20%;
+            }
+            .score-col {
+                width: 80px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Prompt Evaluation Report</h1>
+            <div class="summary-stats">
+                <div class="stat-box">
+                    <div>Total Test Cases</div>
+                    <div class="stat-value">2</div>
+                </div>
+                <div class="stat-box">
+                    <div>Average Score</div>
+                    <div class="stat-value">6.0 / 10</div>
+                </div>
+                <div class="stat-box">
+                    <div>Pass Rate (≥7)</div>
+                    <div class="stat-value">50.0%</div>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Prompt Inputs</th>
+                    <th>Solution Criteria</th>
+                    <th>Output</th>
+                    <th>Score</th>
+                    <th>Reasoning</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr>
+                <td>Testing with a high-intensity sport athlete (e.g., marathon runner) who requires specific macronutrient ratios and timing around training sessions, including pre-workout, intra-workout, and recovery nutrition</td>
+                <td class="prompt-inputs"><strong>height:</strong> 178 cm<br><strong>weight:</strong> 68 kg<br><strong>goal:</strong> Marathon training with peak performance during a 20-mile long run scheduled for 10 AM<br><strong>restrictions:</strong> No dairy, prefers plant-based protein sources</td>
+                <td class="criteria">• Meal plan covers all three nutrition phases: pre-workout (2-3 hours before 10 AM run), intra-workout (fueling strategy during the run), and post-workout recovery<br>• Macronutrient ratios appropriate for endurance athlete (carbohydrate-focused with adequate protein and minimal fat during training window)<br>• All meals and snacks accommodate dairy-free, plant-based protein restrictions<br>• Plan is concise and fits within a single day format with specific timing</td>
+                <td class="output"><pre># One-Day Marathon Training Meal Plan
+
+**Athlete Profile:** 68 kg endurance athlete, dairy-free, plant-based proteins
+**Total Daily Energy:** 2,850 calories | **Protein:** 110g | **Carbs:** 425g | **Fat:** 65g
+
+---
+
+## MEAL SCHEDULE
+
+### **6:00 AM - PRE-LONG RUN BREAKFAST** (2 hours before 8 AM start)
+*Calories: 520 | Protein: 12g | Carbs: 95g | Fat: 10g*
+
+- Oatmeal (dry): 80g
+- Banana: 150g
+- Almond butter: 20g
+- Maple syrup: 15g
+- Water: 250ml
+
+**Preparation:** Cook oatmeal with water, top with banana slices, drizzle almond butter and syrup.
+
+---
+
+### **8:00 AM - DURING LONG RUN** (20-mile run)
+*Calories: 280 | Protein: 4g | Carbs: 65g | Fat: 2g*
+
+- Energy drink (homemade):
+  - Water: 500ml
+  - Brown rice syrup: 40g
+  - Sea salt: 1g
+  - Lemon juice: 15ml
+- Dates: 60g (eat at mile 8 & 15)
+
+---
+
+### **10:30 AM - IMMEDIATE POST-RUN RECOVERY** (within 30 min of finishing)
+*Calories: 380 | Protein: 18g | Carbs: 65g | Fat: 6g*
+
+- Smoothie bowl:
+  - Soy milk (unsweetened): 250ml
+  - Pea protein powder: 30g
+  - Frozen mango: 100g
+  - Granola (vegan): 40g
+  - Chia seeds: 12g
+
+**Preparation:** Blend milk, protein powder, and mango. Pour into bowl, top with granola and chia seeds.
+
+---
+
+### **1:00 PM - LUNCH** (Recovery meal, 2.5 hours post-run)
+*Calories: 620 | Protein: 28g | Carbs: 85g | Fat: 18g*
+
+- Quinoa: 75g (cooked)
+- Black beans: 150g (cooked)
+- Sweet potato: 200g (roasted)
+- Olive oil: 15ml
+- Nutritional yeast: 10g
+- Kale: 80g (sautéed)
+- Pumpkin seeds: 20g
+
+**Preparation:** Sauté kale in olive oil, roast sweet potato, warm beans and quinoa together with nutritional yeast.
+
+---
+
+### **4:00 PM - AFTERNOON SNACK**
+*Calories: 280 | Protein: 12g | Carbs: 40g | Fat: 8g*
+
+- Hummus: 60g
+- Whole grain pita bread: 70g
+- Raw vegetables:
+  - Carrot sticks: 100g
+  - Bell pepper: 80g
+  - Cucumber: 80g
+- Tahini drizzle: 10g
+
+---
+
+### **7:00 PM - DINNER**
+*Calories: 580 | Protein: 26g | Carbs: 75g | Fat: 15g*
+
+- Lentil pasta (whole grain): 90g (dry)
+- Tomato-based marinara sauce: 200g
+- Tofu (firm, crumbled): 150g
+- Olive oil: 12ml
+- Garlic: 5g
+- Spinach: 100g
+- Nutritional yeast: 8g
+
+**Preparation:** Cook pasta, sauté tofu in olive oil with garlic, combine with marinara and spinach, toss together with pasta.
+
+---
+
+### **9:00 PM - EVENING RECOVERY SNACK**
+*Calories: 210 | Protein: 10g | Carbs: 30g | Fat: 6g*
+
+- Peanut butter: 25g</pre></td>
+                <td class="score-col"><span class="score score-medium">7</span></td>
+                <td class="reasoning">The solution meets all three mandatory requirements with comprehensive detail. However, there is a critical timing error: the task specifies a 10 AM run start, but the meal plan structures everything around an 8 AM start, making the 6 AM breakfast 4 hours pre-run instead of the recommended 2-3 hours. This undermines the pre-workout nutrition strategy. The macronutrient ratios are well-balanced for endurance training, all restrictions are honored (dairy-free, plant-based proteins), and the format is concise and well-organized. The incomplete evening snack and potentially conservative intra-run fueling are secondary issues. The timing discrepancy is significant enough to warrant a deduction, but the solution still demonstrates strong nutritional planning and meets core requirements.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with an athlete in a sport requiring weight management (e.g., boxer or gymnast) with caloric constraints, focusing on nutrient density and how to maintain performance while staying within strict calorie limits</td>
+                <td class="prompt-inputs"><strong>height:</strong> 173 cm<br><strong>weight:</strong> 68 kg<br><strong>goal:</strong> Maintain performance while cutting to 66 kg for competition in 10 days without losing strength<br><strong>restrictions:</strong> Vegetarian, no dairy</td>
+                <td class="criteria">• Meal plan stays within 2,200-2,400 calories per day while meeting protein requirements (≥1.6g per kg body weight)<br>• All meals align with stated dietary restrictions (vegetarian, dairy-free)<br>• Includes nutrient-dense foods that support athletic performance and recovery</td>
+                <td class="output"><pre># One Day Vegetarian, Dairy-Free Meat Plan for Athlete
+
+**IMPORTANT NOTE:** This athlete requested a "meat plan" but has a vegetarian restriction. This plan uses plant-based proteins instead.
+
+---
+
+## Daily Targets
+- **Calories:** 2,100 (moderate deficit for 2 kg loss over 10 days)
+- **Protein:** 140g (high priority to maintain strength)
+- **Carbohydrates:** 240g (fuel for performance)
+- **Fat:** 58g
+
+---
+
+## Daily Meal Plan
+
+### **BREAKFAST** | 7:00 AM
+- Oatmeal: 80g dry
+- Banana: 150g
+- Almond butter: 20g
+- Soy milk (unsweetened): 240ml
+
+**Calories: 520 | P: 18g | C: 75g | F: 14g**
+
+---
+
+### **MID-MORNING SNACK** | 10:00 AM
+- Tofu yogurt alternative (coconut-based): 150g
+- Granola (vegan): 40g
+- Berries (mixed frozen): 100g
+
+**Calories: 280 | P: 8g | C: 42g | F: 8g**
+
+---
+
+### **LUNCH** | 1:00 PM
+- Tempeh: 150g (marinated and pan-fried)
+- Brown rice: 150g cooked
+- Steamed broccoli: 150g
+- Olive oil: 10ml
+
+**Calories: 560 | P: 32g | C: 65g | F: 18g**
+
+---
+
+### **PRE-WORKOUT** | 3:30 PM
+- Rice cakes: 50g
+- Dates (dried): 40g
+- Hemp seed powder: 20g
+
+**Calories: 220 | P: 8g | C: 42g | F: 5g**
+
+---
+
+### **DINNER** | 7:00 PM
+- Lentil & vegetable curry: 
+  - Red lentils: 100g dry (makes ~250g cooked)
+  - Chickpeas (canned): 150g
+  - Spinach: 100g
+  - Onion: 80g
+  - Coconut milk (light): 100ml
+  - Spices & garlic
+- Quinoa: 80g cooked
+- Coconut oil: 5ml
+
+**Calories: 540 | P: 32g | C: 70g | F: 13g**
+
+---
+
+### **EVENING SNACK** | 9:00 PM
+- Peanut butter: 25g
+- Apple: 150g
+
+**Calories: 180 | P: 6g | C: 20g | F: 10g**
+
+---
+
+## Daily Totals
+- **Calories: 2,300** (adjust down 200 if weight loss stalls)
+- **Protein: 104g** ⚠️ *Below 140g target*
+- **Carbs: 314g**
+- **Fat: 68g**
+
+---
+
+## Optimization Notes
+
+### To Hit 140g Protein:
+Add one of these options:
+- **Pea protein powder shake** (30g protein): +120 cal
+- **Nutritional yeast** (15g, sprinkle on meals): +15g protein, +30 cal
+- **Increase tempeh to 200g at lunch**: +18g protein, +90 cal
+
+### Budget-Friendly Swaps:
+- Tempeh → dried lentils (cheaper per serving)
+- Almond butter → peanut butter
+- Vegan yogurt → homemade coconut milk pudding
+
+### Timing Tips for Competition:
+- Eat last meal 3 hours before weigh-in
+- Hydrate consistently (3-4L water daily)
+- Reduce sodium day-of if needed
+
+---
+
+**⚠️ Medical Note:** This 2kg cut in 10 days is aggressive. Consider consulting a sports dietitian to ensure adequate nutrition while maintaining strength for competition.</pre></td>
+                <td class="score-col"><span class="score score-low">5</span></td>
+                <td class="reasoning">The solution meets the structural mandatory requirements (includes daily totals, macrobreakdown, meals with portions/timing) and fully respects dietary restrictions with nutrient-dense foods. However, it fails a critical secondary criterion: the base meal plan does not meet the protein requirement of ≥1.6g per kg body weight (104g delivered vs. 140g required). While the solution acknowledges this gap and provides correction options, the primary plan itself is deficient. The calorie target is also slightly high at 2,300 (vs. 2,200-2,400 range). These are significant performance-related issues for an athlete cutting weight while maintaining strength.</td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </body>
+    </html>
+    
