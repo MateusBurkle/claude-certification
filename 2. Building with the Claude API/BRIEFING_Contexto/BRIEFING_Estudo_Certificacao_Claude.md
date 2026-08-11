@@ -2,7 +2,7 @@
 
 > **Como usar:** anexe este arquivo no início de um novo chat e diga "Leia o briefing, vamos continuar". Isso dá ao assistente todo o contexto do que estamos fazendo.
 >
-> *Última atualização: 06/08/2026 — ao concluir a Seção 2 e iniciar a Seção 3.*
+> *Última atualização: 06/08/2026 — Seção 3 com 5 aulas prontas (Lessons 1 a 5).*
 
 ---
 
@@ -40,7 +40,7 @@ Para cada aula que eu enviar (colo o texto + imagens da aula), gere um documento
 ### Seções do Curso 2 (Building with the Claude API) — 10 no total:
 1. Anthropic Overview → `Modulo2_01_Anthropic_Overview.docx` ✅ **concluída**
 2. Accessing Claude with the API → `Modulo2_02_Accessing_Claude_with_the_API.docx` ✅ **concluída (7 aulas, 39 páginas)**
-3. **Prompt Evaluation** ⬅️ *seção atual — documento ainda não criado*
+3. **Prompt Evaluation** → `Modulo2_03_Prompt_Evaluation.docx` ⬅️ *seção atual — 5 aulas feitas, 30 páginas, em andamento*
 4. Prompt Engineering Techniques
 5. Tool Use with Claude
 6. RAG and Agentic Search
@@ -59,6 +59,15 @@ Para cada aula que eu enviar (colo o texto + imagens da aula), gere um documento
 5. Temperature
 6. Response Streaming
 7. Structured Data
+
+### Conteúdo da Seção 3 (em andamento) — aulas já no documento
+1. Prompt Evaluation — engineering vs evaluation; as 3 opções após escrever um prompt
+2. A Typical Eval Workflow — os 5 passos; grader; média como métrica objetiva
+3. Generating Test Datasets — goal/input/output; meta-prompt para gerar o dataset; Haiku
+4. Running the Eval — `run_prompt`, `run_test_case`, `run_eval`; score hardcoded 10
+5. Model-Based Grading — code/model/human graders; critérios; `grade_by_model`; média com `statistics.mean`
+
+**Instrução para as próximas aulas desta seção:** o usuário pediu para **focar no que é NOVO** e não repetir o que já está no documento (ex.: não redocumentar `add_user_message` / `add_assistant_message`, nem os 5 passos do workflow, nem os diagramas de ribbon do Step 3/Step 4 — já estão na Lesson 2).
 
 ---
 
@@ -90,6 +99,22 @@ Meus dois únicos erros foram em questões com formulação negativa (**NOT**, *
 - O quiz oficial da Seção 2 não tinha nenhuma questão negativa, então esse ponto **ainda não foi testado de verdade**.
 
 **Pendência de tracking:** o `weak_topics_tracking.xlsx` **ainda não foi atualizado** com os resultados da Seção 2. Decidi juntar mais conteúdo antes de fazer a rodada de reforço. Nada de conteúdo a reforçar no Módulo 2 — só o item de leitura de enunciados.
+
+### Status do Curso 2 — Seção 3 (Prompt Evaluation) — EM ANDAMENTO
+- As questões das Lessons 1 a 5 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
+
+---
+
+## 🐍 Dúvidas de Python já esclarecidas (não preciso de reexplicação)
+
+Sou novo em algumas construções de Python. Já entendi, com explicação dada nesta preparação:
+
+- **`with open(...) as f:`** — context manager; fecha o arquivo automaticamente ao fim do bloco, inclusive em caso de erro. Substitui o `f.close()` manual.
+- **`json.dump` vs `json.dumps`** — `dump` escreve num arquivo, `dumps` (com s) retorna string. Mesma lógica para `json.load` (lê de arquivo) vs `json.loads` (lê de string).
+- **Modos de arquivo** — `"r"` leitura, `"w"` escreve apagando tudo, `"a"` append, `"x"` cria se não existir, `"r+"` leitura e escrita. Para editar JSON o padrão é **ler com `"r"` → modificar o objeto Python → regravar tudo com `"w"`**; `"a"` quebra o JSON.
+- **Docstring** (`"""..."""` abaixo do `def`) é documentação, não executa. **`pass`** é corpo vazio válido.
+- **prompt / test case input / prompt completo** — o prompt é o template com o buraco (`{question}`, `{task}`); o test case input é o que preenche o buraco; os dois juntos formam o **prompt completo**, que viaja como `content` da user message. "Template" descreve a *forma* (molde reutilizável), o conteúdo dele por acaso é instrução.
+- **O merge é vertical, não horizontal** — `run_prompt` recebe **um** test case e junta template + 1 pergunta. Nunca junta as perguntas entre si; se juntasse, haveria uma nota só e o diagnóstico por caso se perderia.
 
 ---
 
@@ -137,6 +162,9 @@ Conversas longas consomem mais tokens (todo o histórico é reprocessado). Estou
 ---
 
 ## ▶️ Próximo passo
-Iniciar a **Seção 3 — Prompt Evaluation**. Vou colar o texto + imagens de cada aula; o assistente cria o `Modulo2_03_Prompt_Evaluation.docx` na primeira aula e vai acrescentando as demais + atualizando o índice.
+Continuar a **Seção 3 — Prompt Evaluation** a partir da Lesson 6. Vou colar o texto + imagens da aula e **reanexar o `Modulo2_03_Prompt_Evaluation.docx`**; o assistente acrescenta a aula no fim e atualiza o índice, focando no que é novo.
 
-**Também em aberto (fora do estudo):** terminar o push do repositório GitHub (ver seção do repositório acima).
+**Também em aberto:**
+- Responder as questões das Lessons 1 a 5 da Seção 3 e mandar para correção.
+- Atualizar o `weak_topics_tracking.xlsx` (juntando Seção 2 + Seção 3) e fazer a rodada de reforço — o único item de conteúdo em aberto é a leitura de enunciados negativos.
+- Terminar o push do repositório GitHub (ver seção do repositório acima).
