@@ -1,8 +1,8 @@
 # 📋 Briefing — Preparação Certificação Anthropic (Claude)
 
 > **Como usar:** anexe este arquivo no início de um novo chat e diga "Leia o briefing, vamos continuar". Isso dá ao assistente todo o contexto do que estamos fazendo.
->
-> *Última atualização: 06/08/2026 — Seção 3 com 5 aulas prontas (Lessons 1 a 5).*
+> 
+> *Última atualização: 11/08/2026 — Seção 3 (Prompt Evaluation) concluída com 6 aulas. Seção 4 (Prompt Engineering Techniques) iniciada, ainda sem aulas.*
 
 ---
 
@@ -11,6 +11,7 @@
 Estou me preparando para tirar uma **certificação da Anthropic** (prova em **inglês**). Estou fazendo os cursos da Anthropic Academy e, a cada aula, o assistente gera material de estudo pra mim.
 
 Ordem dos cursos que estou seguindo:
+
 1. Introduction to Agent Skills ✅ **(concluído)**
 2. **Building with the Claude API** ⬅️ *estou aqui (Módulo 2)*
 3. Introduction to Model Context Protocol
@@ -28,20 +29,25 @@ Para cada aula que eu enviar (colo o texto + imagens da aula), gere um documento
   - **Core idea** — 1-2 frases com a ideia central
   - **Key points** — bullets curtos com termos-chave em **destaque**
   - **Conceitos essenciais** — parágrafo desenvolvido para cada (NÃO enxugar os principais)
-  - **Diagramas** — recriar os que eu enviar na conversa, no estilo visual da Anthropic, com legenda
+  - **Diagramas** — usar as imagens reais que eu mandar na conversa (embutidas no docx), com legenda; não recriar do zero
   - **Tabelas** — para conteúdo comparativo/listável
 - **Perguntas:** **5 questões** de múltipla escolha, alternativas **A a E**, SEM gabarito no documento
 - **Gabarito:** só quando eu enviar minhas respostas → aí corrige, explica cada erro e registra no tracking
+- **Foco no que é NOVO:** ao adicionar uma aula, não redocumentar conceitos/diagramas que já estão em aulas anteriores da mesma seção — só o que a aula acrescenta.
 
 ### Organização em documentos-mãe por SEÇÃO
+
 - **1 documento por seção do curso** (não 1 por aula). Cada aula vira uma subseção dentro do documento-mãe, com índice (Contents) no topo.
 - Quando eu adicionar uma aula a uma seção existente, **eu reanexo o .docx da seção** e o assistente adiciona a nova aula no fim + atualiza o índice.
+- Ao trocar de seção, começa **um documento-mãe novo** (não continua no da seção anterior).
+- Formatação a seguir sempre: fonte Ink Free; título da aula em marrom escuro (`#5A3E1B`, negrito); subtítulos (Core idea, Key points, cada conceito, Practice Questions) em marrom claro (`#7A5A2E`, negrito); termos-chave em negrito `#5A3E1B` dentro dos bullets; tabelas com borda preta simples, sem sombreamento; legendas de imagem em itálico cinza (`#888888`); perguntas de prática em fonte Arial. (Padrão confirmado a partir do `Modulo2_03_Prompt_Evaluation.docx`.)
 
 ### Seções do Curso 2 (Building with the Claude API) — 10 no total:
+
 1. Anthropic Overview → `Modulo2_01_Anthropic_Overview.docx` ✅ **concluída**
 2. Accessing Claude with the API → `Modulo2_02_Accessing_Claude_with_the_API.docx` ✅ **concluída (7 aulas, 39 páginas)**
-3. **Prompt Evaluation** → `Modulo2_03_Prompt_Evaluation.docx` ⬅️ *seção atual — 5 aulas feitas, 30 páginas, em andamento*
-4. Prompt Engineering Techniques
+3. Prompt Evaluation → `Modulo2_03_Prompt_Evaluation.docx` ✅ **concluída (6 aulas)**
+4. **Prompt Engineering Techniques** → `Modulo2_04_Prompt_Engineering_Techniques.docx` ⬅️ *seção atual — ainda sem aulas*
 5. Tool Use with Claude
 6. RAG and Agentic Search
 7. Features of Claude
@@ -52,6 +58,7 @@ Para cada aula que eu enviar (colo o texto + imagens da aula), gere um documento
 *(O curso tem ~86 aulas no total distribuídas nessas seções.)*
 
 ### Conteúdo da Seção 2 (concluída) — para referência
+
 1. The Request Flow & How Claude Processes It
 2. Making Your First API Request
 3. Multi-Turn Conversations
@@ -60,14 +67,18 @@ Para cada aula que eu enviar (colo o texto + imagens da aula), gere um documento
 6. Response Streaming
 7. Structured Data
 
-### Conteúdo da Seção 3 (em andamento) — aulas já no documento
+### Conteúdo da Seção 3 (concluída) — para referência
+
 1. Prompt Evaluation — engineering vs evaluation; as 3 opções após escrever um prompt
 2. A Typical Eval Workflow — os 5 passos; grader; média como métrica objetiva
 3. Generating Test Datasets — goal/input/output; meta-prompt para gerar o dataset; Haiku
 4. Running the Eval — `run_prompt`, `run_test_case`, `run_eval`; score hardcoded 10
 5. Model-Based Grading — code/model/human graders; critérios; `grade_by_model`; média com `statistics.mean`
+6. Code Based Grading — code grader (Format, Valid Syntax) vs model grader (Task Following); `validate_json`/`validate_python`/`validate_regex`; campo `"format"` no dataset; pre-fill genérico ```` ```code ````; score combinado `(model_score + syntax_score) / 2`
 
-**Instrução para as próximas aulas desta seção:** o usuário pediu para **focar no que é NOVO** e não repetir o que já está no documento (ex.: não redocumentar `add_user_message` / `add_assistant_message`, nem os 5 passos do workflow, nem os diagramas de ribbon do Step 3/Step 4 — já estão na Lesson 2).
+### Conteúdo da Seção 4 (em andamento) — aulas já no documento
+
+*(nenhuma ainda — aguardando primeira aula)*
 
 ---
 
@@ -78,30 +89,42 @@ Para cada aula que eu enviar (colo o texto + imagens da aula), gere um documento
 - Quando uma área fraca acumula erros, gerar uma **rodada de reforço** focada nela.
 
 ### Status do Curso 1 (Agent Skills) — CONCLUÍDO
+
 - Lesson 1: 9/10 · Lesson 2: 10/10 · Lesson 3: 9/10 · Lesson 4: 10/10 · Lesson 5: 9/10 · Lesson 6: 10/10
 - Reinforcement Round: 12/12
 - **Áreas fracas (todas já reforçadas):** estrutura de arquivos/sintaxe; comportamento de loading (main vs subagent)
 
 ### Status do Curso 2 — Seção 2 (Accessing Claude with the API) — CONCLUÍDA
+
 **Questões de treino (do meu material): 33/35 — 94%**
+
 - Lesson 1: 4/5 · Lesson 2: 5/5 · Lesson 3: 5/5 · Lesson 4: 4/5 · Lesson 5: 5/5 · Lesson 6: 5/5 · Lesson 7: 5/5
 
 **Quiz oficial do curso: 8/8 — 100%**
 
 **Os 2 erros do treino:**
+
 - Lesson 1, Q2 — campos do *request* vs. campos da *response* (Stop Reason é da response). Resolvido: o quiz oficial confirmou a mesma perspectiva.
 - Lesson 4, Q3 — não li a palavra "PREVENT" no enunciado.
 
 **⚠️ Área fraca em aberto — LEITURA DE ENUNCIADOS NEGATIVOS**
 Meus dois únicos erros foram em questões com formulação negativa (**NOT**, **EXCEPT**, **PREVENT**, **LEAST**). Nos dois casos marquei uma alternativa *verdadeira sobre o assunto*, mas que não respondia ao que foi pedido. **Não é falta de conhecimento — é pressa na leitura.**
+
 - Hábito a treinar: ao ver NOT/EXCEPT/PREVENT/LEAST, marcar a palavra e ler as alternativas perguntando "esta é a exceção?" em vez de "esta é verdadeira?".
 - É um ponto **transversal**: afeta qualquer módulo, não um conteúdo específico.
 - O quiz oficial da Seção 2 não tinha nenhuma questão negativa, então esse ponto **ainda não foi testado de verdade**.
 
 **Pendência de tracking:** o `weak_topics_tracking.xlsx` **ainda não foi atualizado** com os resultados da Seção 2. Decidi juntar mais conteúdo antes de fazer a rodada de reforço. Nada de conteúdo a reforçar no Módulo 2 — só o item de leitura de enunciados.
 
-### Status do Curso 2 — Seção 3 (Prompt Evaluation) — EM ANDAMENTO
-- As questões das Lessons 1 a 5 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
+### Status do Curso 2 — Seção 3 (Prompt Evaluation) — CONCLUÍDA (conteúdo); questões pendentes
+
+- Documento fechado com 6 aulas (Lessons 1 a 6, incluindo Code Based Grading).
+- As questões das Lessons 1 a 6 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
+
+### Status do Curso 2 — Seção 4 (Prompt Engineering Techniques) — EM ANDAMENTO
+
+- Documento `Modulo2_04_Prompt_Engineering_Techniques.docx` ainda não existe — será criado na primeira aula enviada.
+- Nenhuma aula ou questão registrada ainda.
 
 ---
 
@@ -127,6 +150,7 @@ Estou fazendo os exercícios práticos do curso em **VS Code + Jupyter Notebook*
 - Uso arquivo `.env` com `ANTHROPIC_API_KEY` para a chave (nunca no código)
 
 ### Problema resolvido: `AuthenticationError: API key is invalid` (401)
+
 - A chave estava correta (formato correto, carregando certo).
 - **Causa real:** minha conta estava no plano **"Evaluation access"** SEM billing configurado. Sem billing/crédito, a API recusa a chave mesmo válida.
 - **Solução:** configurar billing no console (console.anthropic.com), com crédito pré-pago pequeno (~US$ 5), auto-reload desligado.
@@ -134,9 +158,11 @@ Estou fazendo os exercícios práticos do curso em **VS Code + Jupyter Notebook*
 - **Pendência:** trocar `claude-sonnet-4-0` (deprecated) por ID atual, ex: `claude-haiku-4-5-20251001`.
 
 ### Autocomplete do VS Code
+
 Quero escrever o código sozinho, sem sugestão inline entregando a resposta. Desativar em `Ctrl+,` → `editor.inlineSuggest.enabled` = false (ou o comando "Toggle Inline Suggestion"). Se for Copilot/IntelliCode, desativar a extensão também.
 
 ### 🔄 Repositório GitHub (em andamento)
+
 Criei um **repositório privado** no GitHub para centralizar a pasta do curso e acessar pelo Linux via VS Code.
 
 - Raiz do repositório: **`C:\Users\Mateus-pc\OneDrive\Claude_Curso`** (a pasta do curso inteiro, não a de um módulo)
@@ -148,6 +174,7 @@ Criei um **repositório privado** no GitHub para centralizar a pasta do curso e 
 - **Uso no Linux depois do push:** `git clone` do repositório, e trabalhar com `git pull` antes de começar / `git push` ao terminar.
 
 ### ⚠️ Segurança
+
 - **NUNCA colar a API key** (nem em prints, nem no chat). Já expus duas vezes sem querer — as duas foram revogadas e criei outra.
 - **Existe um arquivo `Key_API_Anthropic_Mateus.md`** na pasta `2. Building with the Claude API/Jupyter_Notebook/` com chave dentro. Ele está no `.gitignore` (`Key_API_Anthropic_Mateus.md` e `*Key_API*`) e foi retirado do staging com `git rm --cached`. **Nunca deixar esse arquivo entrar em commit.** O ideal é migrar o conteúdo para `.env` e apagar o `.md`.
 - Comando útil para auditar antes de commitar: `findstr /s /i /c:"sk-ant" *.ipynb *.md *.py`
@@ -157,14 +184,17 @@ Criei um **repositório privado** no GitHub para centralizar a pasta do curso e 
 ---
 
 ## 💡 Motivo de trocar de chat
+
 Conversas longas consomem mais tokens (todo o histórico é reprocessado). Estou no plano **Pro**. Estratégia: **começar chat novo a cada seção**, levando este briefing + os arquivos-mãe + o tracking. O assistente pode gerar direto sem revisar cada página visualmente toda vez (o formato já está definido).
 
 ---
 
 ## ▶️ Próximo passo
-Continuar a **Seção 3 — Prompt Evaluation** a partir da Lesson 6. Vou colar o texto + imagens da aula e **reanexar o `Modulo2_03_Prompt_Evaluation.docx`**; o assistente acrescenta a aula no fim e atualiza o índice, focando no que é novo.
+
+Iniciar a **Seção 4 — Prompt Engineering Techniques**. Vou colar o texto + imagens da primeira aula; o assistente cria o `Modulo2_04_Prompt_Engineering_Techniques.docx` do zero, seguindo o mesmo padrão visual da Seção 3 (título, cores, tabelas, legendas, perguntas).
 
 **Também em aberto:**
-- Responder as questões das Lessons 1 a 5 da Seção 3 e mandar para correção.
+
+- Responder as questões das Lessons 1 a 6 da Seção 3 e mandar para correção.
 - Atualizar o `weak_topics_tracking.xlsx` (juntando Seção 2 + Seção 3) e fazer a rodada de reforço — o único item de conteúdo em aberto é a leitura de enunciados negativos.
 - Terminar o push do repositório GitHub (ver seção do repositório acima).
