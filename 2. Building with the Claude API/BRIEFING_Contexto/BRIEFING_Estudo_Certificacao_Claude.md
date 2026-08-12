@@ -2,7 +2,7 @@
 
 > **Como usar:** anexe este arquivo no início de um novo chat e diga "Leia o briefing, vamos continuar". Isso dá ao assistente todo o contexto do que estamos fazendo.
 > 
-> *Última atualização: 11/08/2026 — Seção 3 (Prompt Evaluation) concluída com 6 aulas. Seção 4 (Prompt Engineering Techniques) iniciada, ainda sem aulas.*
+> *Última atualização: 11/08/2026 — Seção 4 (Prompt Engineering Techniques) concluída com 5 aulas. Seção 5 (Tool Use with Claude) iniciada, ainda sem aulas.*
 
 ---
 
@@ -25,15 +25,16 @@ Para cada aula que eu enviar (colo o texto + imagens da aula), gere um documento
 
 - **Fonte:** Ink Free (aparência manuscrita; é fonte do Windows, funciona no meu Word)
 - **Idioma:** tudo em **inglês** (resumo e perguntas), pois a prova é em inglês
-- **Estrutura do resumo (enxuto, mas com profundidade onde importa):**
+- **Estrutura do resumo (dinâmico e enxuto — NÃO um ensaio):**
   - **Core idea** — 1-2 frases com a ideia central
   - **Key points** — bullets curtos com termos-chave em **destaque**
-  - **Conceitos essenciais** — parágrafo desenvolvido para cada (NÃO enxugar os principais)
-  - **Diagramas** — usar as imagens reais que eu mandar na conversa (embutidas no docx), com legenda; não recriar do zero
-  - **Tabelas** — para conteúdo comparativo/listável
+  - **Conceitos essenciais** — um subtítulo por seção/bloco que a própria aula já tinha (usar os nomes originais da aula, não inventar agrupamentos novos); cada um com **parágrafo curto de 3-5 frases** (~60-100 palavras) — parafrasear de perto o que a aula diz, sem camadas extras de análise/interpretação
+  - **Diagramas e tabelas ficam intercalados no texto**, logo depois do parágrafo a que se referem — nunca em um bloco único de "Diagramas"/"Tabelas" no fim da aula. Usar as imagens reais que eu mandar na conversa (embutidas no docx), com legenda; não recriar do zero
+  - **Tabelas** — pequenas, só para conteúdo genuinamente comparativo/listável
 - **Perguntas:** **5 questões** de múltipla escolha, alternativas **A a E**, SEM gabarito no documento
 - **Gabarito:** só quando eu enviar minhas respostas → aí corrige, explica cada erro e registra no tracking
 - **Foco no que é NOVO:** ao adicionar uma aula, não redocumentar conceitos/diagramas que já estão em aulas anteriores da mesma seção — só o que a aula acrescenta.
+- **Referência de densidade:** o padrão certo é o do `Modulo2_03_Prompt_Evaluation.docx` (Seção 3) — resumos objetivos e próximos do texto original da aula. Se um resumo de aula ficar visivelmente mais "inchado"/analítico que as aulas anteriores da mesma seção, é sinal de que fugiu do padrão — comparar densidade com a aula anterior antes de fechar o documento.
 
 ### Organização em documentos-mãe por SEÇÃO
 
@@ -47,8 +48,8 @@ Para cada aula que eu enviar (colo o texto + imagens da aula), gere um documento
 1. Anthropic Overview → `Modulo2_01_Anthropic_Overview.docx` ✅ **concluída**
 2. Accessing Claude with the API → `Modulo2_02_Accessing_Claude_with_the_API.docx` ✅ **concluída (7 aulas, 39 páginas)**
 3. Prompt Evaluation → `Modulo2_03_Prompt_Evaluation.docx` ✅ **concluída (6 aulas)**
-4. **Prompt Engineering Techniques** → `Modulo2_04_Prompt_Engineering_Techniques.docx` ⬅️ *seção atual — ainda sem aulas*
-5. Tool Use with Claude
+4. Prompt Engineering Techniques → `Modulo2_04_Prompt_Engineering_Techniques.docx` ✅ **concluída (5 aulas)**
+5. **Tool Use with Claude** → `Modulo2_05_Tool_Use_with_Claude.docx` ⬅️ *seção atual — ainda sem aulas*
 6. RAG and Agentic Search
 7. Features of Claude
 8. Model Context Protocol
@@ -76,7 +77,15 @@ Para cada aula que eu enviar (colo o texto + imagens da aula), gere um documento
 5. Model-Based Grading — code/model/human graders; critérios; `grade_by_model`; média com `statistics.mean`
 6. Code Based Grading — code grader (Format, Valid Syntax) vs model grader (Task Following); `validate_json`/`validate_python`/`validate_regex`; campo `"format"` no dataset; pre-fill genérico ```` ```code ````; score combinado `(model_score + syntax_score) / 2`
 
-### Conteúdo da Seção 4 (em andamento) — aulas já no documento
+### Conteúdo da Seção 4 (concluída) — para referência
+
+1. Prompt Engineering — ciclo iterativo (set a goal → write → evaluate → apply technique → re-evaluate); `PromptEvaluator`, `max_concurrent_tasks`, `generate_dataset()`, `extra_criteria`
+2. Being Clear and Direct — clareza (linguagem simples) vs. diretividade (instrução + verbo de ação); score 2.32 → 3.92
+3. Being Specific — output guidelines vs. process steps; quando usar cada um; score 3.92 → 7.86
+4. Structure with XML Tags — tags descritivas como delimitadores (`<sales_records>`, `<my_code>`/`<docs>`, `<athlete_information>`)
+5. Providing Examples — one-shot/multi-shot; `<sample_input>`/`<ideal_output>`; tirar exemplos das notas mais altas da própria avaliação; explicar por que o output é ideal
+
+### Conteúdo da Seção 5 (em andamento) — aulas já no documento
 
 *(nenhuma ainda — aguardando primeira aula)*
 
@@ -121,9 +130,14 @@ Meus dois únicos erros foram em questões com formulação negativa (**NOT**, *
 - Documento fechado com 6 aulas (Lessons 1 a 6, incluindo Code Based Grading).
 - As questões das Lessons 1 a 6 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
 
-### Status do Curso 2 — Seção 4 (Prompt Engineering Techniques) — EM ANDAMENTO
+### Status do Curso 2 — Seção 4 (Prompt Engineering Techniques) — CONCLUÍDA (conteúdo); questões pendentes
 
-- Documento `Modulo2_04_Prompt_Engineering_Techniques.docx` ainda não existe — será criado na primeira aula enviada.
+- Documento fechado com 5 aulas (Lessons 1 a 5). Resumos reescritos uma vez no meio do caminho para ficarem mais enxutos/dinâmicos (ver nota na seção de formato acima) — todo o documento já está no padrão final.
+- As questões das Lessons 1 a 5 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
+
+### Status do Curso 2 — Seção 5 (Tool Use with Claude) — EM ANDAMENTO
+
+- Documento `Modulo2_05_Tool_Use_with_Claude.docx` ainda não existe — será criado na primeira aula enviada.
 - Nenhuma aula ou questão registrada ainda.
 
 ---
@@ -191,10 +205,10 @@ Conversas longas consomem mais tokens (todo o histórico é reprocessado). Estou
 
 ## ▶️ Próximo passo
 
-Iniciar a **Seção 4 — Prompt Engineering Techniques**. Vou colar o texto + imagens da primeira aula; o assistente cria o `Modulo2_04_Prompt_Engineering_Techniques.docx` do zero, seguindo o mesmo padrão visual da Seção 3 (título, cores, tabelas, legendas, perguntas).
+Iniciar a **Seção 5 — Tool Use with Claude**. Vou colar o texto + imagens da primeira aula; o assistente cria o `Modulo2_05_Tool_Use_with_Claude.docx` do zero, seguindo o mesmo padrão visual e de densidade da Seção 3/4 (título, cores, tabelas e diagramas intercalados, perguntas).
 
 **Também em aberto:**
 
-- Responder as questões das Lessons 1 a 6 da Seção 3 e mandar para correção.
-- Atualizar o `weak_topics_tracking.xlsx` (juntando Seção 2 + Seção 3) e fazer a rodada de reforço — o único item de conteúdo em aberto é a leitura de enunciados negativos.
+- Responder as questões das Lessons 1 a 6 da Seção 3 e das Lessons 1 a 5 da Seção 4, e mandar para correção.
+- Atualizar o `weak_topics_tracking.xlsx` (juntando Seção 2 + Seção 3 + Seção 4) e fazer a rodada de reforço — o único item de conteúdo em aberto é a leitura de enunciados negativos.
 - Terminar o push do repositório GitHub (ver seção do repositório acima).
