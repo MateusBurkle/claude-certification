@@ -1,14 +1,14 @@
 [
   {
-    "task": "Extract all AWS S3 bucket names from CloudFormation template output text",
+    "task": "Parse an AWS S3 bucket name from an S3 URI (e.g., 's3://my-bucket/path/to/file.txt') and extract just the bucket name",
     "format": "regex"
   },
   {
-    "task": "Parse an AWS IAM policy JSON and return a list of all allowed actions",
-    "format": "python"
+    "task": "Create a JSON configuration object for an AWS Lambda function that specifies the function name, runtime (Python 3.11), timeout (30 seconds), and memory size (256 MB)",
+    "format": "json"
   },
   {
-    "task": "Create a JSON configuration object for an AWS Lambda function with basic settings (function name, runtime, role ARN, timeout)",
-    "format": "json"
+    "task": "Write a Python function that takes an AWS IAM policy JSON string and returns a list of all the actions (e.g., 's3:GetObject') permitted in the policy",
+    "format": "python"
   }
 ]

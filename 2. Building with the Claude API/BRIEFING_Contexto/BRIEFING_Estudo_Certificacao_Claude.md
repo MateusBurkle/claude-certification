@@ -2,7 +2,7 @@
 
 > **Como usar:** anexe este arquivo no início de um novo chat e diga "Leia o briefing, vamos continuar". Isso dá ao assistente todo o contexto do que estamos fazendo.
 > 
-> *Última atualização: 11/08/2026 — Seção 4 (Prompt Engineering Techniques) concluída com 5 aulas. Seção 5 (Tool Use with Claude) iniciada, ainda sem aulas.*
+> *Última atualização: 12/08/2026 — Seção 5 (Tool Use with Claude) concluída com 6 aulas. Seção 6 (RAG and Agentic Search) iniciada, ainda sem aulas.*
 
 ---
 
@@ -49,8 +49,8 @@ Para cada aula que eu enviar (colo o texto + imagens da aula), gere um documento
 2. Accessing Claude with the API → `Modulo2_02_Accessing_Claude_with_the_API.docx` ✅ **concluída (7 aulas, 39 páginas)**
 3. Prompt Evaluation → `Modulo2_03_Prompt_Evaluation.docx` ✅ **concluída (6 aulas)**
 4. Prompt Engineering Techniques → `Modulo2_04_Prompt_Engineering_Techniques.docx` ✅ **concluída (5 aulas)**
-5. **Tool Use with Claude** → `Modulo2_05_Tool_Use_with_Claude.docx` ⬅️ *seção atual — ainda sem aulas*
-6. RAG and Agentic Search
+5. Tool Use with Claude → `Modulo2_05_Tool_Use_with_Claude.docx` ✅ **concluída (6 aulas)**
+6. **RAG and Agentic Search** → `Modulo2_06_RAG_and_Agentic_Search.docx` ⬅️ *seção atual — ainda sem aulas*
 7. Features of Claude
 8. Model Context Protocol
 9. Anthropic Apps — Claude Code and Computer Use
@@ -85,7 +85,16 @@ Para cada aula que eu enviar (colo o texto + imagens da aula), gere um documento
 4. Structure with XML Tags — tags descritivas como delimitadores (`<sales_records>`, `<my_code>`/`<docs>`, `<athlete_information>`)
 5. Providing Examples — one-shot/multi-shot; `<sample_input>`/`<ideal_output>`; tirar exemplos das notas mais altas da própria avaliação; explicar por que o output é ideal
 
-### Conteúdo da Seção 5 (em andamento) — aulas já no documento
+### Conteúdo da Seção 5 (concluída) — para referência
+
+1. Introducing Tool Use — problema sem tools (Claude não tem acesso a dados externos/tempo real); fluxo de 4 passos (Initial Request → Tool Request → Data Retrieval → Final Response); exemplo do clima aplicando o fluxo genérico; benefícios-chave (real-time information, external system integration, dynamic responses, structured interaction)
+2. Project Overview: Reminder Tool — projeto prático de reminders ("Set a reminder for my doctor's appointment..."); 3 limitações do Claude (hora exata, soma de datas, não sabe setar reminder); 3 ferramentas a implementar (get current date time, add duration to date time, set a reminder), construídas uma por vez começando pela mais simples
+3. Tool Function — definição (função Python plain executada quando Claude decide que precisa de dado extra); boas práticas (nomes descritivos, validar inputs, mensagens de erro que o Claude usa para retry); implementação de `get_current_datetime(date_format=...)` com validação e exemplos de uso; próximo passo é escrever o JSON schema
+4. Tool Schemas — JSON Schema não é específico de IA (spec de validação de dados já existente); 3 partes do tool spec (name, description, input_schema); boas práticas de descrição (3-4 frases, quando usar, o que retorna, descrições detalhadas por argumento); gerar o schema pedindo ao próprio Claude (com a documentação de tool use como contexto); padrão de nomenclatura `function_name_schema`; `ToolParam` da lib Anthropic para type safety
+5. Handling Message Blocks — parâmetro `tools=[...]` na chamada da API; mensagens multi-bloco (Text Block + ToolUse Block) quando Claude decide usar uma tool; conteúdo do ToolUse block (id, name, input, type="tool_use"); preservar `response.content` inteiro ao salvar no histórico; fluxo completo de 5 passos (enviar → receber texto+tool_use → executar função → enviar resultado → resposta final); necessidade de atualizar helper functions para suportar conteúdo multi-bloco
+6. Sending Tool Results — executar a função com `**response.content[1].input` (unpacking); tool_result block (`tool_use_id`, `content` serializado como string, `is_error`) dentro de uma mensagem `user`; múltiplas tool calls em uma resposta, cada uma com ID único que precisa ser casado no resultado; follow-up request precisa do histórico completo + o novo tool_result; a chamada final ainda precisa incluir `tools=[...]` mesmo sem esperar nova tool call
+
+### Conteúdo da Seção 6 (em andamento) — aulas já no documento
 
 *(nenhuma ainda — aguardando primeira aula)*
 
@@ -135,9 +144,14 @@ Meus dois únicos erros foram em questões com formulação negativa (**NOT**, *
 - Documento fechado com 5 aulas (Lessons 1 a 5). Resumos reescritos uma vez no meio do caminho para ficarem mais enxutos/dinâmicos (ver nota na seção de formato acima) — todo o documento já está no padrão final.
 - As questões das Lessons 1 a 5 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
 
-### Status do Curso 2 — Seção 5 (Tool Use with Claude) — EM ANDAMENTO
+### Status do Curso 2 — Seção 5 (Tool Use with Claude) — CONCLUÍDA (conteúdo); questões pendentes
 
-- Documento `Modulo2_05_Tool_Use_with_Claude.docx` ainda não existe — será criado na primeira aula enviada.
+- Documento fechado com 6 aulas (Introducing Tool Use; Project Overview: Reminder Tool; Tool Function; Tool Schemas; Handling Message Blocks; Sending Tool Results).
+- As questões das Lessons 1-6 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
+
+### Status do Curso 2 — Seção 6 (RAG and Agentic Search) — EM ANDAMENTO
+
+- Documento `Modulo2_06_RAG_and_Agentic_Search.docx` ainda não existe — será criado na primeira aula enviada.
 - Nenhuma aula ou questão registrada ainda.
 
 ---
@@ -205,10 +219,10 @@ Conversas longas consomem mais tokens (todo o histórico é reprocessado). Estou
 
 ## ▶️ Próximo passo
 
-Iniciar a **Seção 5 — Tool Use with Claude**. Vou colar o texto + imagens da primeira aula; o assistente cria o `Modulo2_05_Tool_Use_with_Claude.docx` do zero, seguindo o mesmo padrão visual e de densidade da Seção 3/4 (título, cores, tabelas e diagramas intercalados, perguntas).
+Iniciar a **Seção 6 — RAG and Agentic Search**. Vou colar o texto + imagens da primeira aula; o assistente cria o `Modulo2_06_RAG_and_Agentic_Search.docx` do zero, seguindo o mesmo padrão visual e de densidade das seções anteriores (título, cores, tabelas e diagramas intercalados, perguntas).
 
 **Também em aberto:**
 
-- Responder as questões das Lessons 1 a 6 da Seção 3 e das Lessons 1 a 5 da Seção 4, e mandar para correção.
-- Atualizar o `weak_topics_tracking.xlsx` (juntando Seção 2 + Seção 3 + Seção 4) e fazer a rodada de reforço — o único item de conteúdo em aberto é a leitura de enunciados negativos.
+- Responder as questões das Lessons 1 a 6 da Seção 3, Lessons 1 a 5 da Seção 4 e Lessons 1-6 da Seção 5, e mandar para correção.
+- Atualizar o `weak_topics_tracking.xlsx` (juntando Seção 2 + Seção 3 + Seção 4 + Seção 5) e fazer a rodada de reforço — o único item de conteúdo em aberto é a leitura de enunciados negativos.
 - Terminar o push do repositório GitHub (ver seção do repositório acima).
