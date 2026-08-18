@@ -2,7 +2,7 @@
 
 > **Como usar:** anexe este arquivo no início de um novo chat e diga "Leia o briefing, vamos continuar". Isso dá ao assistente todo o contexto do que estamos fazendo.
 > 
-> *Última atualização: 12/08/2026 — Seção 5 (Tool Use with Claude) concluída com 6 aulas. Seção 6 (RAG and Agentic Search) iniciada, ainda sem aulas.*
+> *Última atualização: 17/08/2026 — Seção 6 (RAG and Agentic Search) com Lesson 1 (Introducing Retrieval Augmented Generation) concluída.*
 
 ---
 
@@ -50,7 +50,7 @@ Para cada aula que eu enviar (colo o texto + imagens da aula), gere um documento
 3. Prompt Evaluation → `Modulo2_03_Prompt_Evaluation.docx` ✅ **concluída (6 aulas)**
 4. Prompt Engineering Techniques → `Modulo2_04_Prompt_Engineering_Techniques.docx` ✅ **concluída (5 aulas)**
 5. Tool Use with Claude → `Modulo2_05_Tool_Use_with_Claude.docx` ✅ **concluída (6 aulas)**
-6. **RAG and Agentic Search** → `Modulo2_06_RAG_and_Agentic_Search.docx` ⬅️ *seção atual — ainda sem aulas*
+6. **RAG and Agentic Search** → `Modulo2_06_RAG_and_Agentic_Search.docx` ⬅️ *seção atual (1 aula)*
 7. Features of Claude
 8. Model Context Protocol
 9. Anthropic Apps — Claude Code and Computer Use
@@ -96,7 +96,7 @@ Para cada aula que eu enviar (colo o texto + imagens da aula), gere um documento
 
 ### Conteúdo da Seção 6 (em andamento) — aulas já no documento
 
-*(nenhuma ainda — aguardando primeira aula)*
+1. Introducing Retrieval Augmented Generation — problema com documentos grandes (ex: doc financeiro de 800 páginas) que não cabem no prompt; Opção 1 (colocar tudo no prompt) e suas limitações (limite de tamanho, Claude menos eficaz, custo e latência maiores); Opção 2/RAG (quebrar em chunks no preprocessing, buscar só os chunks relevantes na hora da pergunta); benefícios (foco, escala, eficiência) vs. desafios (preprocessing, mecanismo de busca, contexto faltante, estratégia de chunking); quando vale a pena usar RAG
 
 ---
 
@@ -151,8 +151,8 @@ Meus dois únicos erros foram em questões com formulação negativa (**NOT**, *
 
 ### Status do Curso 2 — Seção 6 (RAG and Agentic Search) — EM ANDAMENTO
 
-- Documento `Modulo2_06_RAG_and_Agentic_Search.docx` ainda não existe — será criado na primeira aula enviada.
-- Nenhuma aula ou questão registrada ainda.
+- Documento `Modulo2_06_RAG_and_Agentic_Search.docx` criado com Lesson 1 (Introducing Retrieval Augmented Generation).
+- As questões da Lesson 1 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
 
 ---
 
@@ -219,10 +219,10 @@ Conversas longas consomem mais tokens (todo o histórico é reprocessado). Estou
 
 ## ▶️ Próximo passo
 
-Iniciar a **Seção 6 — RAG and Agentic Search**. Vou colar o texto + imagens da primeira aula; o assistente cria o `Modulo2_06_RAG_and_Agentic_Search.docx` do zero, seguindo o mesmo padrão visual e de densidade das seções anteriores (título, cores, tabelas e diagramas intercalados, perguntas).
+Continuar a **Seção 6 — RAG and Agentic Search** com a próxima aula (colar texto + imagens); o assistente reanexa `Modulo2_06_RAG_and_Agentic_Search.docx` e adiciona a aula no fim + atualiza o índice.
 
 **Também em aberto:**
 
-- Responder as questões das Lessons 1 a 6 da Seção 3, Lessons 1 a 5 da Seção 4 e Lessons 1-6 da Seção 5, e mandar para correção.
+- Responder as questões das Lessons 1 a 6 da Seção 3, Lessons 1 a 5 da Seção 4, Lessons 1-6 da Seção 5 e Lesson 1 da Seção 6, e mandar para correção.
 - Atualizar o `weak_topics_tracking.xlsx` (juntando Seção 2 + Seção 3 + Seção 4 + Seção 5) e fazer a rodada de reforço — o único item de conteúdo em aberto é a leitura de enunciados negativos.
 - Terminar o push do repositório GitHub (ver seção do repositório acima).
