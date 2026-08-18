@@ -2,7 +2,7 @@
 
 > **Como usar:** anexe este arquivo no início de um novo chat e diga "Leia o briefing, vamos continuar". Isso dá ao assistente todo o contexto do que estamos fazendo.
 > 
-> *Última atualização: 18/08/2026 — Seção 6 (RAG and Agentic Search) concluída com 7 aulas. Seção 7 (Features of Claude) iniciada, ainda sem aulas.*
+> *Última atualização: 18/08/2026 — Seção 6 (RAG and Agentic Search) concluída com 7 aulas. Seção 7 (Features of Claude) com Lesson 1 (Extended Thinking) concluída.*
 
 ---
 
@@ -51,7 +51,7 @@ Para cada aula que eu enviar (colo o texto + imagens da aula), gere um documento
 4. Prompt Engineering Techniques → `Modulo2_04_Prompt_Engineering_Techniques.docx` ✅ **concluída (5 aulas)**
 5. Tool Use with Claude → `Modulo2_05_Tool_Use_with_Claude.docx` ✅ **concluída (6 aulas)**
 6. RAG and Agentic Search → `Modulo2_06_RAG_and_Agentic_Search.docx` ✅ **concluída (7 aulas)**
-7. **Features of Claude** → `Modulo2_07_Features_of_Claude.docx` ⬅️ *seção atual — ainda sem aulas*
+7. **Features of Claude** → `Modulo2_07_Features_of_Claude.docx` ⬅️ *seção atual (1 aula)*
 8. Model Context Protocol
 9. Anthropic Apps — Claude Code and Computer Use
 10. Agents and Workflows
@@ -106,7 +106,7 @@ Para cada aula que eu enviar (colo o texto + imagens da aula), gere um documento
 
 ### Conteúdo da Seção 7 (em andamento) — aulas já no documento
 
-*(nenhuma ainda — aguardando primeira aula)*
+1. Extended Thinking — "scratch paper" do Claude: bloco de raciocínio (`thinking`) separado do bloco de texto final, ativado com `thinking=True` e `thinking_budget` (mínimo 1024 tokens, `max_tokens` precisa ser maior que o budget); benefícios (melhor raciocínio, mais precisão, transparência) vs. trade-offs (custo maior, latência maior, tratamento de resposta mais complexo); quando usar — decisão guiada por avaliação de prompt (rodar sem thinking primeiro, só ativar se a precisão não bater depois do prompt já otimizado), não um padrão para toda chamada; `signature` — token criptográfico que garante que o texto do thinking não foi alterado antes de devolver à API; `redacted_thinking` — bloco criptografado quando o raciocínio interno é sinalizado pelos sistemas de segurança, mantém o contexto sem expor o conteúdo; string mágica de teste para forçar um redacted thinking block
 
 ---
 
@@ -166,8 +166,8 @@ Meus dois únicos erros foram em questões com formulação negativa (**NOT**, *
 
 ### Status do Curso 2 — Seção 7 (Features of Claude) — EM ANDAMENTO
 
-- Documento `Modulo2_07_Features_of_Claude.docx` ainda não existe — será criado na primeira aula enviada.
-- Nenhuma aula ou questão registrada ainda.
+- Documento `Modulo2_07_Features_of_Claude.docx` criado com a Lesson 1 (Extended Thinking).
+- As questões da Lesson 1 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
 
 ---
 
@@ -234,7 +234,7 @@ Conversas longas consomem mais tokens (todo o histórico é reprocessado). Estou
 
 ## ▶️ Próximo passo
 
-Iniciar a **Seção 7 — Features of Claude**. Vou colar o texto + imagens da primeira aula; o assistente cria o `Modulo2_07_Features_of_Claude.docx` do zero, seguindo o mesmo padrão visual e de densidade das seções anteriores (título, cores, tabelas e diagramas intercalados, perguntas).
+Continuar a **Seção 7 — Features of Claude** com a próxima aula (colar texto + imagens); o assistente reanexa `Modulo2_07_Features_of_Claude.docx` e adiciona a aula no fim + atualiza o índice.
 
 **Também em aberto:**
 
