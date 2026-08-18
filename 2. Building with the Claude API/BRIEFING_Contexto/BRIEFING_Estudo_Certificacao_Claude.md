@@ -2,7 +2,7 @@
 
 > **Como usar:** anexe este arquivo no início de um novo chat e diga "Leia o briefing, vamos continuar". Isso dá ao assistente todo o contexto do que estamos fazendo.
 > 
-> *Última atualização: 17/08/2026 — Seção 6 (RAG and Agentic Search) com Lesson 1 (Introducing Retrieval Augmented Generation) concluída.*
+> *Última atualização: 18/08/2026 — Seção 6 (RAG and Agentic Search) concluída com 7 aulas. Seção 7 (Features of Claude) iniciada, ainda sem aulas.*
 
 ---
 
@@ -50,8 +50,8 @@ Para cada aula que eu enviar (colo o texto + imagens da aula), gere um documento
 3. Prompt Evaluation → `Modulo2_03_Prompt_Evaluation.docx` ✅ **concluída (6 aulas)**
 4. Prompt Engineering Techniques → `Modulo2_04_Prompt_Engineering_Techniques.docx` ✅ **concluída (5 aulas)**
 5. Tool Use with Claude → `Modulo2_05_Tool_Use_with_Claude.docx` ✅ **concluída (6 aulas)**
-6. **RAG and Agentic Search** → `Modulo2_06_RAG_and_Agentic_Search.docx` ⬅️ *seção atual (1 aula)*
-7. Features of Claude
+6. RAG and Agentic Search → `Modulo2_06_RAG_and_Agentic_Search.docx` ✅ **concluída (7 aulas)**
+7. **Features of Claude** → `Modulo2_07_Features_of_Claude.docx` ⬅️ *seção atual — ainda sem aulas*
 8. Model Context Protocol
 9. Anthropic Apps — Claude Code and Computer Use
 10. Agents and Workflows
@@ -94,9 +94,19 @@ Para cada aula que eu enviar (colo o texto + imagens da aula), gere um documento
 5. Handling Message Blocks — parâmetro `tools=[...]` na chamada da API; mensagens multi-bloco (Text Block + ToolUse Block) quando Claude decide usar uma tool; conteúdo do ToolUse block (id, name, input, type="tool_use"); preservar `response.content` inteiro ao salvar no histórico; fluxo completo de 5 passos (enviar → receber texto+tool_use → executar função → enviar resultado → resposta final); necessidade de atualizar helper functions para suportar conteúdo multi-bloco
 6. Sending Tool Results — executar a função com `**response.content[1].input` (unpacking); tool_result block (`tool_use_id`, `content` serializado como string, `is_error`) dentro de uma mensagem `user`; múltiplas tool calls em uma resposta, cada uma com ID único que precisa ser casado no resultado; follow-up request precisa do histórico completo + o novo tool_result; a chamada final ainda precisa incluir `tools=[...]` mesmo sem esperar nova tool call
 
-### Conteúdo da Seção 6 (em andamento) — aulas já no documento
+### Conteúdo da Seção 6 (concluída) — para referência
 
 1. Introducing Retrieval Augmented Generation — problema com documentos grandes (ex: doc financeiro de 800 páginas) que não cabem no prompt; Opção 1 (colocar tudo no prompt) e suas limitações (limite de tamanho, Claude menos eficaz, custo e latência maiores); Opção 2/RAG (quebrar em chunks no preprocessing, buscar só os chunks relevantes na hora da pergunta); benefícios (foco, escala, eficiência) vs. desafios (preprocessing, mecanismo de busca, contexto faltante, estratégia de chunking); quando vale a pena usar RAG
+2. Text Chunking Strategies — impacto direto da qualidade do chunking na qualidade do sistema RAG; exemplo do erro "bug" (medical research vs. software engineering); 3 abordagens principais (size-based, structure-based, semantic-based); size-based (`chunk_by_char`, downsides de cortar palavras/contexto, overlap como solução); structure-based (`chunk_by_section` via regex em headers Markdown); semantic-based (NLP, caro mas mais relevante); sentence-based como meio-termo prático (`chunk_by_sentence`); como escolher a estratégia por caso de uso
+3. Text Embeddings — encontrar chunks relevantes é um problema de busca; semantic search usa embeddings (em vez de keyword matching); embedding = representação numérica do significado de um texto, cada número entre -1 e +1; não sabemos precisamente o que cada número representa (exemplos como "how happy" são apenas ilustrativos); VoyageAI como provedor recomendado (Anthropic não oferece embeddings); `generate_embedding()` com `voyageai.Client().embed(...)`; o desafio real é comparar embeddings, não gerá-los
+4. The Full RAG Flow — exemplo numérico completo do pipeline (chunk → embed → normalizar → armazenar em vector database → embed da query → normalizar → buscar por similaridade → montar prompt final); modelo de embedding imaginário de 2 números (medical/software) para tornar o exemplo tangível; normalização escala o vetor para magnitude 1.0; vector database é otimizado para armazenar/comparar embeddings; cosine similarity (cosseno do ângulo entre vetores, -1 a 1) como métrica de busca, com cálculo completo (0.983 vs 0.398); cosine distance = 1 − cosine similarity; montagem do prompt final só com o chunk vencedor
+5. Implementing the RAG Flow — implementação em código dos 5 passos (chunk → generate embeddings → create vector store → embed user query → search); `chunk_by_section` reaproveitado; `generate_embedding()` agora aceita lista de strings (batch); `VectorIndex()` + `store.add_vector(embedding, {"content": chunk})` guardando embedding E texto original (necessário porque a busca sozinha só retorna números); `store.search(user_embedding, 2)` retornando os 2 chunks mais próximos com distância; exemplo real com distância 0.71 (Software Engineering) vs 0.72 (Methodology) — menor distância = maior similaridade
+6. BM25 Lexical Search — limitação do semantic search puro (pode perder termos exatos, ex: ID de incidente "INC-2023-Q4-011"); hybrid search = semantic search + lexical search em paralelo, depois merge; BM25 (Best Match 25) como algoritmo de lexical search: tokenizar query → contar frequência dos termos em todos os documentos → dar mais peso a termos raros → retornar chunks com mais instâncias dos termos mais pesados; `BM25Index()` + `store.add_document({"content": chunk})` + `store.search(query, n)`; BM25 funciona bem para termos técnicos/IDs/frases específicas, complementando o semantic search
+7. A Multi-Index RAG Pipeline — VectorIndex e BM25Index compartilham a mesma API (`add_document`/`search`), o que permite uni-los numa classe `Retriever`; Reciprocal Rank Fusion (RRF) para combinar rankings de fontes diferentes de forma justa; fórmula `RRF_score(d) = Σ 1/(k + rank_i(d))`, k=1 no exemplo (60 é o padrão usual); exemplo completo com cálculo de scores e ranking final; implementação da classe `Retriever` (wraps múltiplos índices, mesma interface); teste do híbrido melhorando os resultados vs. busca vetorial pura; extensibilidade — qualquer novo índice que implemente `SearchIndex` (add_document/search) se encaixa automaticamente na fusão
+
+### Conteúdo da Seção 7 (em andamento) — aulas já no documento
+
+*(nenhuma ainda — aguardando primeira aula)*
 
 ---
 
@@ -149,10 +159,15 @@ Meus dois únicos erros foram em questões com formulação negativa (**NOT**, *
 - Documento fechado com 6 aulas (Introducing Tool Use; Project Overview: Reminder Tool; Tool Function; Tool Schemas; Handling Message Blocks; Sending Tool Results).
 - As questões das Lessons 1-6 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
 
-### Status do Curso 2 — Seção 6 (RAG and Agentic Search) — EM ANDAMENTO
+### Status do Curso 2 — Seção 6 (RAG and Agentic Search) — CONCLUÍDA (conteúdo); questões pendentes
 
-- Documento `Modulo2_06_RAG_and_Agentic_Search.docx` criado com Lesson 1 (Introducing Retrieval Augmented Generation).
-- As questões da Lesson 1 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
+- Documento fechado com 7 aulas (Introducing Retrieval Augmented Generation; Text Chunking Strategies; Text Embeddings; The Full RAG Flow; Implementing the RAG Flow; BM25 Lexical Search; A Multi-Index RAG Pipeline).
+- As questões das Lessons 1-7 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
+
+### Status do Curso 2 — Seção 7 (Features of Claude) — EM ANDAMENTO
+
+- Documento `Modulo2_07_Features_of_Claude.docx` ainda não existe — será criado na primeira aula enviada.
+- Nenhuma aula ou questão registrada ainda.
 
 ---
 
@@ -219,10 +234,10 @@ Conversas longas consomem mais tokens (todo o histórico é reprocessado). Estou
 
 ## ▶️ Próximo passo
 
-Continuar a **Seção 6 — RAG and Agentic Search** com a próxima aula (colar texto + imagens); o assistente reanexa `Modulo2_06_RAG_and_Agentic_Search.docx` e adiciona a aula no fim + atualiza o índice.
+Iniciar a **Seção 7 — Features of Claude**. Vou colar o texto + imagens da primeira aula; o assistente cria o `Modulo2_07_Features_of_Claude.docx` do zero, seguindo o mesmo padrão visual e de densidade das seções anteriores (título, cores, tabelas e diagramas intercalados, perguntas).
 
 **Também em aberto:**
 
-- Responder as questões das Lessons 1 a 6 da Seção 3, Lessons 1 a 5 da Seção 4, Lessons 1-6 da Seção 5 e Lesson 1 da Seção 6, e mandar para correção.
-- Atualizar o `weak_topics_tracking.xlsx` (juntando Seção 2 + Seção 3 + Seção 4 + Seção 5) e fazer a rodada de reforço — o único item de conteúdo em aberto é a leitura de enunciados negativos.
+- Responder as questões das Lessons 1 a 6 da Seção 3, Lessons 1 a 5 da Seção 4, Lessons 1-6 da Seção 5 e Lessons 1-7 da Seção 6, e mandar para correção.
+- Atualizar o `weak_topics_tracking.xlsx` (juntando Seção 2 + Seção 3 + Seção 4 + Seção 5 + Seção 6) e fazer a rodada de reforço — o único item de conteúdo em aberto é a leitura de enunciados negativos.
 - Terminar o push do repositório GitHub (ver seção do repositório acima).
