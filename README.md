@@ -18,6 +18,10 @@ Material do Curso 1 (concluído): um `.docx` por aula, uma planilha `weak_topics
 
 Material do Curso 2 (em andamento), dividido em três tipos de conteúdo:
 
+#### `Modules_Notes/`
+
+Todas as anotações foram carregadas para dentro desta pasta, assim deixando todos documentos juntos dentro em uma mesma pasta.
+
 - **`Modulo2_XX_*.docx`** — os documentos de estudo, um por seção do curso (ex: `Modulo2_05_Tool_Use_with_Claude.docx`). Cada um reúne todas as aulas daquela seção, com resumo, diagramas e questões de múltipla escolha.
 - **`BRIEFING_Contexto/`** — contém o `BRIEFING_Estudo_Certificacao_Claude.md`, o arquivo de contexto que uso para retomar o trabalho em um novo chat (formato dos documentos, progresso por seção, pontos fracos, etc.).
 - **`VoyageAI_API_Key_Directions.pdf`** — guia oficial da Voyage para gerar uma API key (usada nos exercícios de embeddings/RAG).
