@@ -1,0 +1,6 @@
+[mcp_servers.documents]
+command = "uv"
+args = [
+    "run",
+    "main.py",
+]
