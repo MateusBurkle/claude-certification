@@ -30,14 +30,14 @@ Todas as anotações foram carregadas para dentro desta pasta, assim deixando to
 
 Pasta principal de exercícios práticos, organizada por tópico:
 
-| Pasta | Conteúdo |
-|---|---|
+| Pasta                                     | Conteúdo                                                              |
+| ----------------------------------------- | --------------------------------------------------------------------- |
 | `requests/`, `streaming/`, `temperature/` | Notebooks das aulas iniciais de request flow, streaming e temperature |
-| `Prompt_Engeerning/`, `Prompt_Evals/` | Prompt engineering e avaliação de prompts |
-| `Tools/` | Tool use — funções, schemas, streaming com tools, web search |
-| `RAG/` | Chunking, embeddings, vector DB, BM25, hybrid search |
-| `Features_of_Claude/` | Extended thinking, image support, citations, documents |
-| `Control_Output/` | Controle de formato/estrutura de saída |
+| `Prompt_Engeerning/`, `Prompt_Evals/`     | Prompt engineering e avaliação de prompts                             |
+| `Tools/`                                  | Tool use — funções, schemas, streaming com tools, web search          |
+| `RAG/`                                    | Chunking, embeddings, vector DB, BM25, hybrid search                  |
+| `Features_of_Claude/`                     | Extended thinking, image support, citations, documents                |
+| `Control_Output/`                         | Controle de formato/estrutura de saída                                |
 
 O arquivo **`.env`** com as chaves de API fica dentro desta pasta (`Jupyter_Notebook/.env`), pois é o diretório a partir do qual os notebooks chamam `load_dotenv()`. Esse arquivo **não é versionado** (está no `.gitignore`).
 

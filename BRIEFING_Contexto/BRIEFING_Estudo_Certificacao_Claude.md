@@ -2,20 +2,82 @@
 
 > **Como usar:** anexe este arquivo no início de um novo chat e diga "Leia o briefing, vamos continuar". Isso dá ao assistente todo o contexto do que estamos fazendo.
 > 
-> *Última atualização: 25/08/2026 — Seção 10 concluída, Curso 2 100% finalizado. Corrigida rodada de 23 questões mistas (Questoes Realizadas.docx): 21/23 — erros em "batch tool" e em prompt caching vs. dividir documento (ver "Rodada de revisão mista" no tracking).*
+> *Última atualização: 04/09/2026 — Curso **AI Fluency: Framework & Foundations CONCLUÍDO**: o usuário estudou por conta própria usando os resumos prontos do próprio curso (não construídos por mim), salvos como 6 PDFs em `7. AI Fluency/` (4D Framework; Understanding Generative AI; Delegation; Discernment; Diligence; 6 Techniques for Effective Prompt Engineering). Usuário optou por **não fazer os exercícios de prática** dessa competência, já que a re-verificação do exam guide oficial confirmou que AI Fluency não é testada na prova. Com isso, **todos os 7 cursos da lista oficial "Foundations Prep Courses" estão concluídos ou deprioritizados conscientemente** — não há curso novo pendente na trilha. Antes disso: Curso **Claude 101 CONCLUÍDO**: 9 aulas (What's Claude?; Your First Conversation with Claude; How You'll Work with Claude on Your Desktop; Introduction to Projects; Creating with Artifacts; Working with Skills — 1 imagem; Research for Deep Dives; Claude in Action: Use Cases by Role; What's Next — recap final), 44 páginas. Confirmado pelo usuário que o Introduction to Model Context Protocol já estava coberto pela Seção 8 do Curso 2; decidido pular Claude on Google Cloud e Claude with Amazon Bedrock (fora de escopo da prova). Curso "Introduction to Subagents" CONCLUÍDO (4 aulas, 22 páginas). Curso "Claude Code in Action" (Curso 4) também já está **completo** (9 aulas) em `Modulo4_Claude_Code_Action.docx`. **Caminho canônico deste briefing é `Claude_Curso/BRIEFING_Contexto/BRIEFING_Estudo_Certificacao_Claude.md`** (não mais a pasta temporária de outputs).*
 
 ---
 
 ## 🎯 Objetivo geral
 
-Estou me preparando para tirar uma **certificação da Anthropic** (prova em **inglês**). Estou fazendo os cursos da Anthropic Academy e, a cada aula, o assistente gera material de estudo pra mim.
+Estou me preparando para a **Claude Certified Architect – Foundations (CCAR-F)**, certificação oficial da Anthropic (prova em **inglês**, exam guide v1.0, efetivo julho/2026). Estou fazendo os cursos da Anthropic Academy e, a cada aula, o assistente gera material de estudo pra mim.
 
-Ordem dos cursos que estou seguindo:
+**O que a prova cobre (confirmado no exam guide oficial):** conhecimento fundamental em Claude Code, Claude Agent SDK, Claude API e Model Context Protocol (MCP) — testado com cenários realistas (sistemas de agente para suporte, pipelines multi-agente de pesquisa, integração de Claude Code em CI/CD, extração de dados estruturados).
 
-1. Introduction to Agent Skills ✅ **(concluído)**
-2. Building with the Claude API ✅ **(concluído — todas as 10 seções)**
-3. Introduction to Model Context Protocol ⬅️ *próximo curso*
-4. Claude Code in Action
+**Fora de escopo da prova** (confirmado direto no PDF oficial do exam guide em 02/09/2026 — não precisa estudar a fundo): fine-tuning/treino de modelo customizado, billing/auth/gestão de conta da API, implementação detalhada de linguagens/frameworks específicos (além do necessário pra config de tool/schema), deploy/hospedagem de MCP servers (infra, networking, orquestração de containers), arquitetura interna do Claude/processo de treino/pesos do modelo, Constitutional AI/RLHF/metodologias de safety training, embeddings/detalhes de implementação de vector database, computer use, capacidades de vision/análise de imagem, implementação de streaming API/server-sent events, rate limiting/quotas/cálculo de preço da API, OAuth/API key rotation/detalhes de protocolo de autenticação, **configuração específica de provedor de nuvem (AWS/GCP/Azure)**, benchmarking de performance/métricas de comparação de modelo, detalhes de implementação de prompt caching (só precisa saber que existe), algoritmos de token counting/detalhes de tokenização.
+
+**Formato da prova (confirmado no exam guide oficial em 02/09/2026):** 60 itens (múltipla escolha e múltipla resposta, cada item informa quantas respostas selecionar), estrutura com 4 cenários sorteados de um banco de 6, 120 minutos de duração, nota de corte de 720 numa escala de 100–1000, taxa de US$125, validade de 12 meses a partir da emissão do certificado. Candidato ideal: arquiteto de soluções com 6+ meses de experiência prática com Claude API, Agent SDK, Claude Code e MCP.
+
+### Os 5 domínios da prova (por peso)
+
+1. **Arquitetura e Orquestração de Agentes — 27%** (o maior peso): Claude Agent SDK, orquestração multi-agente, delegação a subagentes, integração de ferramentas, lifecycle hooks.
+2. **Configuração e Workflows do Claude Code — 20%**: CLAUDE.md, Agent Skills, integrações de servidores MCP, plan mode.
+3. **Engenharia de Prompts e Saída Estruturada — 20%**: JSON schemas, few-shot examples, padrões de extração.
+4. **Design de Ferramentas e Integração MCP — 18%**: interfaces de ferramentas e recursos MCP pra integração com sistemas backend.
+5. **Gestão de Contexto e Confiabilidade — 15%**: janelas de contexto em documentos longos, conversas multi-turno, handoffs multi-agente, decisões de erro e escalação.
+
+### Diagnóstico de cobertura (feito em 25/08/2026)
+
+- **Curso 2 (Building with the Claude API, concluído)** é oficialmente um dos 7 cursos de prep da Anthropic pra essa certificação — não foi tempo perdido. Cobre bem os Domínios 3 e 4; parcialmente o Domínio 5 (falta multi-agent handoffs e decisões de erro/escalação); pouco os Domínios 1 e 2.
+- **Achado crítico:** não existe curso dedicado "Claude Agent SDK" na Anthropic Academy — é o único dos 4 pilares da prova sem curso próprio. O curso mais próximo é "Introduction to Subagents" (não está na lista oficial dos 7 "Foundations Prep Courses", mas é gratuito e mira direto o Domínio 1, o de maior peso).
+- Dos 4 cursos extras que o usuário tinha em mente (AI Fluency, Claude on Google Cloud, Claude 101, Claude with Amazon Bedrock): 2 deles (Google Cloud, Amazon Bedrock) ensinam configuração de nuvem específica, que o próprio exam guide marca como **fora de escopo** — baixa prioridade pra prova especificamente.
+- **Reconfirmado em 02/09/2026 direto no PDF oficial do exam guide:** nem "Claude 101" nem "AI Fluency" são citados em nenhum lugar do documento — não aparecem na lista de preparação recomendada nem mapeiam pra nenhum dos 5 domínios. O guide recomenda, em vez de cursos, exercícios práticos: construir um agente com o Claude Agent SDK, configurar Claude Code num projeto real, desenhar/testar tools MCP, montar um pipeline de extração de dados estruturados. Confirma que os dois cursos são baixo retorno pra prova especificamente — mas o usuário decidiu fazê-los mesmo assim, conscientemente, só pra completar a lista oficial rápido.
+- **Também reconfirmado:** o Claude Agent SDK aparece constantemente no exam guide (agent definitions, agentic loop, stop_reason, hooks como PostToolUse, subagent spawning via Task tool, allowedTools) — valida que Introduction to Subagents foi a escolha certa pro Domínio 1. MCP tem peso próprio de 18% (servers, tools, resources, isError flag) — valida que a Seção 8 do Curso 2 cobre bem esse domínio.
+
+### 📚 Trilha de estudo escolhida — Plano B (por peso de domínio)
+
+O usuário escolheu o **Plano B** entre as 2 opções apresentadas: em vez de seguir a lista oficial de 7 cursos na ordem "genérica", ataca primeiro o domínio que mais vale na prova.
+
+1. **Domínio 1 (27%) — prioridade máxima:**
+   - Introduction to Subagents (curso extra, fora da lista oficial mas essencial)
+   - Partes de orquestração/lifecycle hooks do curso Claude Code in Action
+   - Leitura dirigida da documentação oficial do Claude Agent SDK em docs.claude.com (não tem curso próprio)
+   - Montar um mini-projeto multi-agente na prática
+2. **Domínios 2 + 3 (20% + 20%):**
+   - Restante do curso Claude Code in Action (CLAUDE.md, plan mode, integrações MCP)
+   - Revisão da Seção 4 do Módulo 2 (Prompt Engineering Techniques)
+   - Prática de JSON schema / padrões de extração
+3. **Domínio 4 (18%):**
+   - Introduction to Model Context Protocol (Curso 3 — já estava planejado)
+   - Opcional: Model Context Protocol — Advanced Topics (sampling, notifications, file system access, transporte)
+4. **Domínio 5 (15%):**
+   - Revisão das Seções 2, 6 e 7 do Módulo 2 (multi-turn, RAG pra documentos longos, prompt caching)
+   - Parte de context/handoffs do Claude Code in Action
+5. **Por último, rápido e sem aprofundar (baixa prioridade pra prova):**
+   - AI Fluency: Framework & Foundations
+   - Claude 101 (revisão rápida — já sabe a maior parte pelo Curso 2)
+   - Claude on Google Cloud e Claude with Amazon Bedrock (fazer só pra completar a lista oficial, pulando as partes cloud-specific que são fora de escopo)
+
+**Ordem prática de cursos a fazer a partir de agora:**
+
+1. ~~Introduction to Subagents~~ ✅ **concluído** (4 aulas, 22 páginas — ver detalhes abaixo; finalizado em 01/09/2026)
+2. ~~Claude Code in Action~~ ✅ **já concluído** (9 aulas — ver detalhes abaixo; descoberto em 01/09/2026, feito numa sessão anterior separada)
+3. ~~Introduction to Model Context Protocol~~ ✅ **já coberto** — o usuário confirmou em 01/09/2026 que já fez esse conteúdo dentro da Seção 8 (Model Context Protocol) do Curso 2 (Building with the Claude API), que tem 11 aulas cobrindo MCP em profundidade (Clients, Tools, Resources, Prompts, projeto prático completo com client+server). Não precisa refazer como curso separado — o gap do Domínio 4 (18%) já estava marcado como "bem coberto" no diagnóstico original.
+4. (opcional) Model Context Protocol — Advanced Topics (sampling, notifications, file system access, transporte — só se quiser aprofundar além do que a Seção 8 já cobre)
+5. ~~Claude 101~~ ✅ **concluído** (9 aulas, 44 páginas — finalizado em 02/09/2026)
+6. ~~AI Fluency: Framework & Foundations~~ ✅ **concluído** (feito em 04/09/2026, ver detalhes abaixo)
+7. ~~Claude on Google Cloud~~ — **deprioritizado pelo usuário**: ensina config específica de nuvem, que o exam guide marca como fora de escopo; não mapeia pra nenhum domínio com peso
+8. ~~Claude with Amazon Bedrock~~ — **deprioritizado pelo usuário**, mesmo motivo acima
+
+*(Com isso, todos os 7 cursos oficiais da lista "Foundations Prep Courses" estão feitos ou deprioritizados conscientemente. Não há mais cursos novos pendentes na trilha do Plano B.)*
+
+**Nota sobre Claude 101 e AI Fluency:** ambos estão na lista oficial dos 7 "Foundations Prep Courses", então o conteúdo é tecnicamente cobrável na prova — mas nenhum dos dois mapeia diretamente pra um dos 5 domínios com peso (Claude 101 é introdutório, o usuário já sabe boa parte pelo Curso 2; AI Fluency é sobre princípios gerais de colaboração com IA, não sobre arquitetura/tooling específico). Baixo risco de peso alto na prova, mas valem pra completar a lista oficial e "adiantar" — foi a decisão consciente do usuário.
+
+*(Cursos já concluídos, contam pra prep: Introduction to Agent Skills ✅, Building with the Claude API ✅ (inclui MCP na Seção 8), Claude Code in Action ✅, Introduction to Subagents ✅.)*
+
+**Estado real da trilha em 01/09/2026:** os Domínios 1 (27%) e 4 (18%) já estão bem cobertos. O que resta do Plano B não são mais cursos novos pesados, e sim: revisão dirigida (Seção 4 do Módulo 2 pra Domínio 3, Seções 2/6/7 pra Domínio 5, prática de JSON schema/extração) + os cursos de baixa prioridade (AI Fluency, Claude 101, Google Cloud, Bedrock) que o exam guide já marca como pouco relevantes ou fora de escopo em parte do conteúdo.
+
+### Curso 4 — Claude Code in Action (descoberto já concluído em 01/09/2026)
+
+Documento `Modulo4_Claude_Code_Action.docx` (pasta `4. Claude Code in Action/`) já existe **completo com 9 aulas**, feito numa sessão de chat separada (arquivo datado de 26/08/2026), antes da escolha do Plano B — por isso não estava refletido neste briefing até agora. Aulas: 1. Steering Long Sessions (plan mode, compact, rewind, goal, loop, worktrees) · 2. A CLAUDE.md That Follows · 3. Verification Skills · 4. Permission Modes · 5. Hooks · 6. Routines and Headless Mode (inclui Agent SDK) · 7. GitHub Actions and Code Review · 8. Trust It: Verifying Unsupervised Runs · 9. Plugins. Cobre bem partes dos Domínios 1 e 2. **Pendente:** ainda não visualizei página por página nem conferi se segue 100% o padrão de formatação usual (Ink Free, cores, imagens intercaladas) — tratar como conteúdo válido mas revisar formatação se for reaberto para adicionar aulas. Questões de treino das 9 aulas ainda não foram respondidas/corrigidas.
 
 ---
 
@@ -195,46 +257,90 @@ Meus dois únicos erros foram em questões com formulação negativa (**NOT**, *
 
 **Pendência de tracking:** o `weak_topics_tracking.xlsx` **ainda não foi atualizado** com os resultados da Seção 2. Decidi juntar mais conteúdo antes de fazer a rodada de reforço. Nada de conteúdo a reforçar no Módulo 2 — só o item de leitura de enunciados.
 
-### Status do Curso 2 — Seção 3 (Prompt Evaluation) — CONCLUÍDA (conteúdo); questões pendentes
+### Status do Curso 2 — Seção 3 (Prompt Evaluation) — ✅ CONCLUÍDA (conteúdo + questões)
 
 - Documento fechado com 6 aulas (Lessons 1 a 6, incluindo Code Based Grading).
-- As questões das Lessons 1 a 6 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
+- **Questões corrigidas em 09/09/2026** (enviado por upload em 09/09) — **28/30 (93,3%)**. Dois erros:
+  - **Lesson 3 (Generating Test Datasets), Q3** — por que o meta-prompt inclui um bloco "Example output"; usuário marcou "para dar a Claude as respostas que deve gerar", correto é **"para fixar o formato exato do JSON que o Claude deve produzir"**.
+  - **Lesson 4 (Running the Eval), Q3** — por que o score fica hardcoded em 10 nessa etapa; usuário marcou "porque a API retorna o score automaticamente", correto é **"porque é um placeholder que permite testar todo o pipeline antes de a lógica de grading real existir"** (comentário `# TODO - Grading` no código).
 
-### Status do Curso 2 — Seção 4 (Prompt Engineering Techniques) — CONCLUÍDA (conteúdo); questões pendentes
+### Status do Curso 2 — Seção 4 (Prompt Engineering Techniques) — ✅ CONCLUÍDA (conteúdo + questões)
 
 - Documento fechado com 5 aulas (Lessons 1 a 5). Resumos reescritos uma vez no meio do caminho para ficarem mais enxutos/dinâmicos (ver nota na seção de formato acima) — todo o documento já está no padrão final.
-- As questões das Lessons 1 a 5 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
+- **Questões corrigidas em 09/09/2026** (usuário respondeu grifando em amarelo dentro do próprio `.docx`, enviado por upload) — **25/25 (100%)**. Todas as 5 aulas com 5/5.
 
-### Status do Curso 2 — Seção 5 (Tool Use with Claude) — CONCLUÍDA (conteúdo); questões pendentes
+### Status do Curso 2 — Seção 5 (Tool Use with Claude) — ✅ CONCLUÍDA (conteúdo + questões)
 
 - Documento fechado com 6 aulas (Introducing Tool Use; Project Overview: Reminder Tool; Tool Function; Tool Schemas; Handling Message Blocks; Sending Tool Results).
-- As questões das Lessons 1-6 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
+- **Questões corrigidas em 09/09/2026** — **29/30 (96,7%)**. Único erro: **Lesson 6 (Sending Tool Results), Q4** — perguntava o role da mensagem que contém um bloco `tool_result`; usuário marcou "assistant", correto é **"user"** (o tool_result é enviado dentro de uma mensagem com `"role": "user"`).
 
-### Status do Curso 2 — Seção 6 (RAG and Agentic Search) — CONCLUÍDA (conteúdo); questões pendentes
+### Status do Curso 2 — Seção 6 (RAG and Agentic Search) — ✅ CONCLUÍDA (conteúdo + questões)
 
 - Documento fechado com 7 aulas (Introducing Retrieval Augmented Generation; Text Chunking Strategies; Text Embeddings; The Full RAG Flow; Implementing the RAG Flow; BM25 Lexical Search; A Multi-Index RAG Pipeline).
-- As questões das Lessons 1-7 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
+- **Questões corrigidas em 09/09/2026** — **35/35 (100%)**. Todas as 7 aulas com 5/5.
 
-### Status do Curso 2 — Seção 7 (Features of Claude) — CONCLUÍDA (conteúdo); questões pendentes
+### Status do Curso 2 — Seção 7 (Features of Claude) — ✅ CONCLUÍDA (conteúdo + questões)
 
 - Documento fechado com 8 aulas (Extended Thinking; Image Support; PDF Support; Citations; Prompt Caching; Rules of Prompt Caching; Prompt Caching in Action; Code Execution and Files API).
-- As questões das Lessons 1-8 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
+- **Questões corrigidas em 09/09/2026** — **42/43 (97,7%)**. Único erro: **Lesson 2 (Image Support), Q2** — perguntava o limite máximo de altura/largura por imagem ao enviar **múltiplas** imagens numa mesma request; usuário marcou 8000px (que é o limite de imagem única), correto é **2000px** (limite específico para múltiplas imagens).
 
-### Status do Curso 2 — Seção 8 (Model Context Protocol) — CONCLUÍDA (conteúdo); questões pendentes
+### Status do Curso 2 — Seção 8 (Model Context Protocol) — ✅ CONCLUÍDA (conteúdo + questões)
 
 - Documento fechado com 11 aulas (Introducing MCP; MCP Clients; Project Setup; Defining Tools with MCP; The Server Inspector; Implementing a Client; Defining Resources; Accessing Resources; Defining Prompts; Prompts in the Client; MCP Review) — 44 páginas.
-- As questões das Lessons 1-11 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
+- **Questões corrigidas em 09/09/2026** — **55/55 (100%)**. Todas as 11 aulas com 5/5.
 
-### Status do Curso 2 — Seção 9 (Anthropic Apps — Claude Code and Computer Use) — CONCLUÍDA (conteúdo); questões pendentes
+### Status do Curso 2 — Seção 9 (Anthropic Apps — Claude Code and Computer Use) — ✅ CONCLUÍDA (conteúdo + questões)
 
 - Documento fechado com 4 aulas (Anthropic Apps; Claude Code Setup; Claude Code in Action; Enhancements with MCP Servers) — 15 páginas.
-- As questões das Lessons 1-4 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
+- **Questões das Lessons 1-3 corrigidas em 09/09/2026 — 15/15 (100%).**
+- **Lesson 4 (Enhancements with MCP Servers) corrigida em 09/09/2026 (via screenshots) — 5/5 (100%)**: Q1-B (MCP client), Q2-A (Tools, Prompts, Resources), Q3-B (`claude mcp add [server-name] [command]`), Q4-B (lê PDF/Word e converte pra markdown), Q5-B (combinar múltiplos MCP servers pro workflow específico).
+- **Seção 9 completa: 20/20 (100%).**
 
-### Status do Curso 2 — Seção 10 (Agents and Workflows) — CONCLUÍDA (conteúdo); questões pendentes
+### Status do Curso 2 — Seção 10 (Agents and Workflows) — ✅ CONCLUÍDA (conteúdo + questões)
 
 - Documento fechado com 7 aulas (Agents and Workflows; Parallelization Workflows; Chaining Workflows; Routing Workflows; Agents and Tools; Environment Inspection; Workflows vs Agents) — 34 páginas.
-- As questões das Lessons 1-7 **ainda não foram respondidas**. Quando eu enviar as respostas, corrigir e registrar aqui.
-- **Última seção do Curso 2 (Building with the Claude API) — CURSO 2 COMPLETO.** Todas as 10 seções (Anthropic Overview → Agents and Workflows) estão com conteúdo finalizado. Falta apenas responder as questões de treino pendentes e atualizar o tracking xlsx.
+- **Questões corrigidas em 09/09/2026 — 35/35 (100%)**, todas as 7 aulas com 5/5. **Nota técnica importante:** neste arquivo o usuário marcou as respostas com a ferramenta de caneta/marca-texto digital do Word (tinta/"ink"), não com o destaque de texto padrão — por isso a primeira tentativa de leitura automática (buscando `w:highlight`) não encontrou nada. A correção certa exigiu renderizar o `.docx` em PDF/imagens (`soffice --headless --convert-to pdf` + `pdftoppm`) e ler visualmente cada uma das 34 páginas para identificar qual letra estava grifada à mão.
+- **Última seção do Curso 2 (Building with the Claude API) — CURSO 2 COMPLETO em conteúdo e questões.** Todas as 10 seções (Anthropic Overview → Agents and Workflows) estão com conteúdo finalizado; questões respondidas e corrigidas nas Seções 3-10 (Seções 1-2 não tinham questões de treino no formato lesson-by-lesson).
+
+**Resumo da correção em massa de 09/09/2026:** usuário enviou 7 dos `.docx` do Curso 2 (Seções 4-10, exceto Seção 3) com respostas grifadas em amarelo diretamente no arquivo (método que funcionou bem via upload no chat — diferente da tentativa anterior de editar o arquivo salvo na pasta do OneDrive, que não sincronizava para esta sessão). Resultado agregado: **201/203 questões corretas (99%)** nas seções com resposta completa (4, 5, 6, 7, 8, e Lessons 1-3 da 9). Pendente: Seção 3 (não enviada nesta rodada), Seção 9 Lesson 4 (5 questões), Seção 10 inteira (35 questões).
+
+### Status do Curso "Introduction to Subagents" — ✅ CONCLUÍDO (4 aulas, 22 páginas)
+
+- Documento `Introduction_to_Subagents.docx` (pasta `5. Introduction to Subagent/`).
+- **Lesson 1 — What Are Subagents** (sem imagens): o que é um subagent, por que importam (system prompt customizado + task description), exemplo prático (refund service), subagents built-in (general purpose, Explore, Plan), subagents customizados, key takeaways.
+- **Lesson 2 — Creating Subagent** (1 imagem — tela do `/agents` no Claude Code): como criar via `/agents` (escopo project/user-level, geração assistida por Claude vs. manual), customização de tools (read-only, edit, execution, MCP, other), escolha de modelo (Haiku/Sonnet/Opus/Inherit) e cor, estrutura do arquivo de config (`.claude/agents/*.md` com YAML frontmatter: name, description, tools, model, color), system prompt como corpo do markdown, uso da palavra "proactively" pra delegação automática, teste do subagent.
+- **Lesson 3 — Designing Effective Subagents** (2 imagens — config detalhada com exemplos de invocação, e invocação real com prompt estruturado): os 4 pilares de um subagent eficaz (descrições específicas, output format definido, reporting de obstáculos, tool access limitado); como a description molda tanto o gatilho de uso quanto o prompt de entrada que o main agent escreve; exemplo completo de output format estruturado (Summary/Critical/Major/Minor Issues/Recommendations/Approval Status) + seção extra de "Obstacles Encountered"; padrão de tools por tipo de subagent (read-only pra pesquisa, Bash sem Edit/Write pra reviewer, Edit/Write só pra quem modifica código).
+- **Lesson 4 — Using Subagents Effectively** (última aula do curso, sem imagens): a regra de decisão central (o trabalho intermediário importa ou não pro main thread); quando subagents brilham (research tasks, code reviews — Claude revisa melhor código "de outra autoria" —, custom system prompts como copywriting/styling); os 3 anti-padrões (expert claims sem valor real, pipelines sequenciais onde cada passo depende do anterior, test runners que escondem output necessário pra debug).
+- **Curso 100% documentado.** Questões das Lessons 1-4 ainda não foram respondidas.
+
+### Status do Curso "Claude 101" — ✅ CONCLUÍDO (9 aulas, 44 páginas)
+
+- Documento `Claude_101.docx` (pasta `6. Claude 101/`).
+- **Lesson 1 — What's Claude?** (sem imagens): Constitutional AI (helpful/harmless/honest), Claude como thinking partner (não só chatbot), steerability, acesso multi-plataforma (Free/Pro/Max/Team/Enterprise, sync entre dispositivos); capacidades (writing, research/analysis com context window de 200K+/1M tokens, coding, problem-solving/reasoning com Thinking, learning mode); formas de acessar Claude (Claude.ai, Claude Code, Claude Tag/Slack, Claude Design, Claude for Microsoft 365).
+- **Lesson 2 — Your First Conversation with Claude** (sem imagens): como escrever prompts eficazes (setting the stage / defining the task / specifying rules — framework adaptado do 4D Framework for AI Fluency: Delegation, Description, Discernment, Diligence); exemplo completo de prompt com os 3 elementos; adicionar contexto via uploads (tipos de arquivo suportados: PDF, DOCX, CSV, TXT, PNG, JPEG) e preferências pessoais em Settings; iteração (follow-up questions, feedback, redirect/restart, editar mensagem com o ícone de lápis); personalização via Memory (contexto salvo automaticamente, sincroniza entre dispositivos) e Styles (tom customizável aplicado a todas as conversas).
+- **Lesson 3 — How You'll Work with Claude on Your Desktop** (sem imagens): as 3 "formas" de trabalho no app desktop (turn-by-turn em Chat, hand-off em Cowork, Claude Code); quando usar cada uma; recursos nativos do Chat (quick entry Option+Option no Mac, screenshots/window sharing, dictation, desktop connectors); recursos do Cowork (local folder access, scheduled tasks, subagents, projects, browser use, computer use em research preview, plugins); Claude Code — Local vs. Cloud (GitHub), e os 3 níveis de autonomia (Manually approve / Accept edits / Plan).
+- **Lesson 4 — Introduction to Projects** (sem imagens): projects como workspaces com memória/knowledge base/instructions próprios; project knowledge (evita reupload) e project instructions (comportamento aplicado a toda conversa no projeto, inclusive automação de workflows); escalonamento automático via RAG (até 10x mais capacidade); passo a passo de criação (setup, instructions, knowledge base); colaboração em Claude for Work (3 níveis de permissão: Can view / Can edit / Owner) e como compartilhar; exemplos de projeto (product launch, research support, client hub, event planning, job description generator); best practices (foco inicial, manter atualizado, instruções claras, nomear documentos, referenciar por nome).
+- **Lesson 5 — Creating with Artifacts** (sem imagens): o que são artifacts (outputs standalone/interativos em janela dedicada) e critérios de quando são criados automaticamente (conteúdo significativo/self-contained, >15 linhas, editável/reutilizável); tipos comuns (documents, code snippets, HTML pages, SVG images, Mermaid diagrams, React components — nota de que Word/Excel/PPT/PDF NÃO são artifacts, usam file creation separado); como criar (conversar naturalmente ou pedir explicitamente "create this as an artifact"); ações na janela do artifact (preview/code, copy, download); compartilhamento (copy/download, share dentro da org no Claude for Work, publish público — só a versão selecionada fica pública, chat continua privado, não indexado por buscadores); dicas (ser específico, descrever o usuário final, iterar incrementalmente, pedir explicitamente quando necessário).
+- **Lesson 6 — Working with Skills** (1 imagem — tabela comparativa Projects vs Skills): o que são Skills (pastas de instruções/scripts/recursos carregadas dinamicamente); Anthropic Skills (Excel/Word/PPT/PDF, automáticas) vs. Custom Skills (workflows específicos); como habilitar (Settings > Capabilities, Code execution and file creation, toggle por skill; regras diferentes para Enterprise/Team); uso na prática (Claude escolhe a skill sozinho, aparece no chain of thought); file execution (upload de arquivos reais .xlsx/.pptx/.docx/.pdf, Claude cria nova versão, precisa de "Allow limited network access"); segurança (só instalar de fontes confiáveis, revisar antes de usar); como criar uma custom skill via conversa (5 passos); Skills vs. Projects (projects guardam conhecimento, skills executam processos — resumo na tabela da imagem).
+- **Lesson 7 — Research for Deep Dives** (sem imagens): o que é Research (feature agentic que transforma Claude em investigador sistemático, múltiplas buscas encadeadas + Thinking); quando usar Research vs. web search vs. Thinking vs. enterprise search; os 4 passos (plan → multiple searches → synthesize → citations); como ativar (botão + → Research, requer web search habilitado); dicas de prompt (ser específico, especificar estrutura, incluir constraints, pedir ajuda pra refinar o prompt); uso com integrações conectadas (Google Workspace — email, calendar, drive).
+- **Lesson 8 — Claude in Action: Use Cases by Role** (sem imagens): casos de uso organizados por função, cada um linkando pro Use Case Gallery oficial. Geral (relatórios de status de projeto, análise de padrões em feedback, empacotar brand guidelines numa skill); Sales (battle card library, preparação de deals, relatórios de vendas); Marketing (análise de performance de campanha, adaptar conteúdo entre plataformas); Finance (modelos financeiros, investment memos, entender/estender planilha herdada); HR (guias de onboarding); Legal (timelines de discovery e análise de padrões); Research (planejar revisão de literatura, verificar estatísticas de dados brutos).
+- **Lesson 9 — What's Next (recap final, sem imagens):** amarra tudo do curso — Getting Started (Claude helpful/harmless/honest, acesso multi-device, prompts com stage/task/rules); Getting Better Results (iteração, AI Fluency 4D); Organizing Your Work (Projects/Artifacts/Skills); Expanding Claude's Reach (Connectors, Enterprise Search, Research); Putting It All Together (Claude por role, surfaces além do claude.ai).
+- **Curso 100% documentado.** Questões das Lessons 1-9 ainda não foram respondidas.
+
+### Status do Curso 4 (Claude Code in Action) — CONCLUÍDO (descoberto, feito em sessão separada)
+
+- Documento `Modulo4_Claude_Code_Action.docx` com 9 aulas completas (ver detalhes na seção "🎯 Objetivo geral" acima).
+- **Questões de treino das 9 aulas CORRIGIDAS em 07/09/2026** — resultado: 43/45 (95,6%). Só 2 erros, ambos por confundir conceitos de aulas próximas:
+  - **Lesson 6 (Routines and Headless Mode), Q1** — errou o que uma *routine* empacota (confundiu com conceitos de session/structured output). Resposta certa: prompt + repositório + connectors.
+  - **Lesson 7 (GitHub Actions and Code Review), Q4** — errou por que o *permission mode* importa numa run desacompanhada (achou que era sobre acesso a repositórios). Resposta certa: numa run sem humano, o modo não pode ficar parando pra perguntar.
+  - Todas as outras aulas (1, 2, 3, 4, 5, 8, 9): 5/5.
+
+### Status do Curso "AI Fluency: Framework & Foundations" — ✅ CONCLUÍDO (04/09/2026, estudo próprio do usuário)
+
+- **Diferente do padrão dos demais cursos**: este NÃO foi construído por mim como `.docx`. O usuário fez o curso por conta própria usando os resumos prontos que o próprio curso da Anthropic Academy fornece por aula, e salvou os PDFs diretamente na pasta `7. AI Fluency/` (6 arquivos, sem passar pelo meu workflow de `editN.py`/`buildN.py`).
+- Arquivos salvos: `4D_Framework.pdf` (visão geral do AI Fluency Framework — 4 competências); `AI_Generative.pdf` (Understanding Generative AI — o que é GenAI); `Delegation.pdf` (The 4Ds: Delegation — o que delegar pra IA, pra você, ou pros dois); `Diligence.pdf` (The 4Ds: Diligence — responsabilidade pelo que se faz com IA); `Discernment.pdf` (The 4Ds: Discernment); `Prompting_Techniques.pdf` (6 Techniques for Effective Prompt Engineering, cobrindo a competência de Description).
+- **Sem questões de prática** para este curso — o usuário decidiu explicitamente não fazer os exercícios recomendados, já que a re-verificação do exam guide oficial (feita nesta mesma sessão) confirmou que AI Fluency **não aparece em nenhum domínio da prova CCAR-F** e não é mencionada no guia oficial. Portanto não há pendência de questões aqui (por decisão consciente, não por trabalho incompleto).
+- Com este curso, **os 7 cursos da lista oficial "Foundations Prep Courses"** (AI Fluency, Building with the Claude API, Claude on Google Cloud, Claude Code in Action, Claude 101, Claude with Amazon Bedrock, Introduction to Model Context Protocol) estão todos **concluídos ou deprioritizados conscientemente** (Google Cloud e Bedrock ficaram de fora por decisão do usuário, por serem fora de escopo da prova).
 
 ---
 
@@ -301,9 +407,35 @@ Conversas longas consomem mais tokens (todo o histórico é reprocessado). Estou
 
 ## ▶️ Próximo passo
 
-**O Curso 2 (Building with the Claude API) está 100% finalizado em conteúdo — todas as 10 seções documentadas.** Não há mais aulas para adicionar. O que resta é:
+**O Curso 2 (Building with the Claude API) está 100% finalizado em conteúdo — todas as 10 seções documentadas.** Não há mais aulas para adicionar nele.
 
-- Responder as questões de treino pendentes (Lessons 1-6 da Seção 3, Lessons 1-5 da Seção 4, Lessons 1-6 da Seção 5, Lessons 1-7 da Seção 6, Lessons 1-8 da Seção 7, Lessons 1-11 da Seção 8, Lessons 1-4 da Seção 9, Lessons 1-7 da Seção 10) e mandar para correção.
-- Atualizar o `weak_topics_tracking.xlsx` (juntando Seção 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10) e fazer a rodada de reforço — o único item de conteúdo em aberto é a leitura de enunciados negativos (NOT/EXCEPT/PREVENT/LEAST).
+**Curso "Introduction to Subagents" CONCLUÍDO** — 4 aulas (What Are Subagents; Creating Subagent; Designing Effective Subagents; Using Subagents Effectively), 22 páginas, finalizado em 01/09/2026. Nenhuma aula nova a adicionar nele.
+
+**Descoberta importante:** o curso **Claude Code in Action (Curso 4)** já está completo (9 aulas, feito em sessão separada em 26/08) — não precisa ser refeito.
+
+**Introduction to Model Context Protocol (Curso 3) já está coberto** — confirmado pelo usuário em 01/09/2026: o conteúdo já foi feito dentro da Seção 8 (Model Context Protocol) do Curso 2, não precisa de curso separado.
+
+**Decisão do usuário em 01/09/2026:** pular Claude on Google Cloud e Claude with Amazon Bedrock (config cloud-specific, fora de escopo da prova, não vale o tempo).
+
+**Curso "Claude 101" CONCLUÍDO** — 9 aulas, 44 páginas, finalizado em 02/09/2026. Nenhuma aula nova a adicionar nele.
+
+**Curso "AI Fluency: Framework & Foundations" CONCLUÍDO em 04/09/2026** — estudado pelo usuário por conta própria via os resumos prontos do curso (6 PDFs salvos em `7. AI Fluency/`), sem construção de `.docx` por mim e sem questões de prática (decisão do usuário, competência confirmada como fora do exam guide).
+
+**Estado atual: não há curso novo pendente na trilha.** Os 7 cursos oficiais da lista "Foundations Prep Courses" estão todos concluídos ou deprioritizados conscientemente (Google Cloud e Bedrock ficaram de fora por decisão do usuário). A única opção de curso novo ainda em aberto é o opcional **Model Context Protocol — Advanced Topics** (sampling, notifications, file system access, transporte), não iniciado e não obrigatório.
+
+**A partir de agora, a prioridade prática é o backlog de questões de treino** acumulado — ver lista abaixo. Aguardar direção do usuário sobre por onde começar (por curso, por domínio de peso, ou revisão mista).
+
+Também em aberto:
+
+- Responder as questões de treino pendentes das 9 aulas do Claude 101 e mandar para correção.
+- Responder as questões de treino pendentes das 4 aulas do curso Introduction to Subagents e mandar para correção.
+- ~~Responder as questões de treino pendentes das 9 aulas do Curso 4 (Claude Code in Action)~~ ✅ **corrigidas em 07/09/2026** — 43/45 (ver "Status do Curso 4" acima para os 2 erros a revisar).
+- ~~Responder as questões de treino pendentes das Seções 4-8 do Curso 2 (Lessons 1-5 da Seção 4, Lessons 1-6 da Seção 5, Lessons 1-7 da Seção 6, Lessons 1-8 da Seção 7, Lessons 1-11 da Seção 8)~~ ✅ **corrigidas em 09/09/2026** — 100% em quase todas, 2 erros pontuais (ver "Status do Curso" de cada seção acima).
+- ~~Seção 3 do Curso 2 (Prompt Evaluation)~~ ✅ **corrigida em 09/09/2026** — 28/30 (2 erros, ver "Status do Curso 2 — Seção 3" acima).
+- ~~Seção 10 inteira (Agents and Workflows)~~ ✅ **corrigida em 09/09/2026** — 35/35 (100%; respostas estavam marcadas em tinta/caneta digital, não em destaque de texto — corrigido via renderização visual em PDF, ver "Status do Curso 2 — Seção 10" acima).
+- ~~Seção 9, Lesson 4 (5 questões sobre Enhancements with MCP Servers)~~ ✅ **corrigida em 09/09/2026** — 5/5 (100%).
+- **Curso 2 (Building with the Claude API) está 100% corrigido** — todas as 10 seções, conteúdo e questões, completos.
+- (AI Fluency não entra nessa lista — por decisão do usuário, esse curso não tem questões de prática.)
+- Atualizar o `weak_topics_tracking.xlsx` (juntando Seção 2 a 10) e fazer a rodada de reforço — pontos em aberto: leitura de enunciados negativos (NOT/EXCEPT/PREVENT/LEAST) e prompt caching como solução prática (ver "Rodada de revisão mista").
 - Terminar o push do repositório GitHub (ver seção do repositório acima).
-- Decidir o próximo passo: começar o Curso 3 (Introduction to Model Context Protocol) ou focar em revisão/reforço do Curso 2 antes da prova.
+- (Opcional) Model Context Protocol — Advanced Topics, se o usuário quiser aprofundar além da Seção 8 do Curso 2.
